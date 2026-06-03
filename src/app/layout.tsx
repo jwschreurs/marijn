@@ -4,9 +4,9 @@ import { Header } from '@/components/Header';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Marijn van der Lende | Mindfulness voor mens en werk',
+  title: 'Marijn met aandacht | Mindfulness voor mens en werk',
   description:
-    'Rustige en moderne website voor mindfulness, trainingen en begeleiding voor mens en werk.',
+    'Mindfulness, training en persoonlijke begeleiding voor meer rust, balans en bewustzijn in leven en werk.',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

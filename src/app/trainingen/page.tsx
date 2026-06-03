@@ -9,8 +9,8 @@ export default function TrainingenPage() {
         <div className="container narrow">
           <SectionTitle
             eyebrow="Trainingen"
-            title="Trainingen en begeleiding"
-            text="Een overzichtelijke pagina waarin je eenvoudig het aanbod, data, prijzen en locaties kunt tonen."
+            title="Trainingen met rust, aandacht en praktische handvatten"
+            text="Voor particulieren, professionals en organisaties die willen werken aan aandacht, balans, veerkracht en bewust omgaan met stress."
             align="center"
           />
         </div>

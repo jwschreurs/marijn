@@ -12,9 +12,10 @@ export function Footer() {
         <div>
           <p className="footer-title">Pagina&apos;s</p>
           <div className="footer-links">
-            <Link href="/">Home</Link>
-            <Link href="/over-marijn">Over Marijn</Link>
+            <Link href="/over-mij">Over mij</Link>
+            <Link href="/mindfulness">Mindfulness</Link>
             <Link href="/trainingen">Trainingen</Link>
+            <Link href="/agenda">Agenda</Link>
             <Link href="/contact">Contact</Link>
           </div>
         </div>

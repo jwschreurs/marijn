@@ -9,18 +9,18 @@ export default function ContactPage() {
         <div className="container narrow">
           <SectionTitle
             eyebrow="Contact"
-            title="Neem rustig contact op"
-            text="Gebruik deze pagina voor e-mail, telefoon, werkgebied en een eenvoudige aanvraag voor training of kennismaking."
+            title="Neem contact op voor een kennismaking"
+            text="Wil je meer weten over een training, individuele begeleiding of een mogelijkheid voor jouw organisatie? Laat gerust een bericht achter."
             align="center"
           />
         </div>
       </section>
 
-      <section className="section">
+      <section className="section soft-section">
         <div className="container two-column form-layout">
           <div className="contact-card">
             <p>
-              <strong>Bedrijfsnaam</strong>
+              <strong>Naam</strong>
               <br />
               {siteConfig.name}
             </p>
@@ -38,6 +38,10 @@ export default function ContactPage() {
               <strong>Werkgebied</strong>
               <br />
               {siteConfig.location}
+            </p>
+            <p className="muted">
+              De contactgegevens zijn placeholders. Deze kun je aanpassen in
+              <code> src/data/site.ts</code>.
             </p>
           </div>
           <TrainingInquiryForm />

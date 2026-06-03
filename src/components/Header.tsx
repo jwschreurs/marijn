@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { siteConfig } from '@/data/site';
 
 const navigation = [
   { href: '/', label: 'Home' },
-  { href: '/over-marijn', label: 'Over Marijn' },
+  { href: '/over-mij', label: 'Over mij' },
+  { href: '/mindfulness', label: 'Mindfulness' },
   { href: '/trainingen', label: 'Trainingen' },
+  { href: '/agenda', label: 'Agenda' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -16,16 +17,12 @@ export function Header() {
         <Link href="/" className="brand" aria-label="Ga naar de homepage">
           <Image
             src="/logo.png"
-            alt="Logo van Marijn van der Lende"
-            width={200}
-            height={67}
+            alt="Logo van Marijn met aandacht"
+            width={1600}
+            height={500}
             className="brand-logo"
             priority
           />
-          <span className="brand-text">
-            <strong>{siteConfig.name}</strong>
-            <span>{siteConfig.tagline}</span>
-          </span>
         </Link>
 
         <nav className="main-nav" aria-label="Hoofdnavigatie">
@@ -35,10 +32,6 @@ export function Header() {
             </Link>
           ))}
         </nav>
-
-        <Link href="/contact" className="button primary header-cta">
-          Kennismaken
-        </Link>
       </div>
     </header>
   );
