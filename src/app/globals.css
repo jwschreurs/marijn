@@ -126,8 +126,23 @@ main {
 }
 
 .nav-link {
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.75rem 1.35rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #e3b08f, #efc9ab);
   color: var(--text-strong);
+  font-weight: 700;
+  box-shadow: 0 8px 22px rgba(165, 109, 76, 0.16);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.nav-link:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, #d69a76, #e8bb99);
+  box-shadow: 0 10px 26px rgba(165, 109, 76, 0.22);
 }
 
 .hero-grid,
@@ -403,6 +418,12 @@ main {
 @media (max-width: 640px) {
   .main-nav {
     gap: 0.8rem 1rem;
+  }
+
+  .nav-link {
+    min-height: 40px;
+    padding: 0.65rem 1rem;
+    font-size: 0.95rem;
   }
 
   .hero-content h1 {
