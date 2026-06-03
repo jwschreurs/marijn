@@ -7,36 +7,37 @@ import { siteConfig, trainingen } from '@/data/site';
 export default function HomePage() {
   return (
     <main>
-      <section className="hero section section--tight">
-        <div className="container hero-grid">
-          <div className="hero-content">
-            <p className="eyebrow">{siteConfig.tagline}</p>
-            <h1>Meer rust, aandacht en balans in leven en werk.</h1>
-            <p className="lead">
-              Marijn met aandacht biedt mindfulness, trainingen en persoonlijke begeleiding voor
-              mensen en organisaties die bewuster willen omgaan met stress, drukte en verandering.
-            </p>
-            <div className="hero-actions">
-              <Link href="/trainingen" className="button primary">
-                Bekijk trainingen
-              </Link>
-              <Link href="/contact" className="button secondary">
-                Neem contact op
-              </Link>
-            </div>
-          </div>
-          <div className="hero-card hero-card--image">
-            <Image
-              src="/hero-marijn.jpeg"
-              alt="Rustige mindfulness achtergrond met uitzicht over een tempelcomplex"
-              width={1600}
-              height={1000}
-              className="hero-photo"
-              priority
-            />
-          </div>
-        </div>
-      </section>
+          <section className="hero section section--tight">
+              <div className="hero-image-background">
+                  <Image
+                      src="/hero-marijn.jpeg"
+                      alt="Rustige mindfulness achtergrond met uitzicht over een tempelcomplex"
+                      fill
+                      className="hero-photo"
+                      priority
+                      sizes="100vw"
+                  />
+              </div>
+
+              <div className="container hero-grid">
+                  <div className="hero-content">
+                      <p className="eyebrow">{siteConfig.tagline}</p>
+                      <h1>Meer rust, aandacht en balans in leven en werk.</h1>
+                      <p className="lead">
+                          Marijn met aandacht biedt mindfulness, trainingen en persoonlijke begeleiding voor
+                          mensen en organisaties die bewuster willen omgaan met stress, drukte en verandering.
+                      </p>
+                      <div className="hero-actions">
+                          <Link href="/trainingen" className="button primary">
+                              Bekijk trainingen
+                          </Link>
+                          <Link href="/contact" className="button secondary">
+                              Neem contact op
+                          </Link>
+                      </div>
+                  </div>
+              </div>
+          </section>
 
       <section className="section soft-section">
         <div className="container two-column">
