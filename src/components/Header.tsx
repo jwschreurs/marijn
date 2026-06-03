@@ -25,6 +25,13 @@ export function Header() {
           />
         </Link>
 
+        <input className="menu-toggle" type="checkbox" id="menu-toggle" aria-hidden="true" />
+        <label className="hamburger-button" htmlFor="menu-toggle" aria-label="Menu openen of sluiten">
+          <span />
+          <span />
+          <span />
+        </label>
+
         <nav className="main-nav" aria-label="Hoofdnavigatie">
           {navigation.map((item) => (
             <Link key={item.href} href={item.href} className="nav-link">

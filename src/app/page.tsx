@@ -25,13 +25,13 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-          <div className="hero-card hero-card--logo">
+          <div className="hero-card hero-card--image">
             <Image
-              src="/logo.png"
-              alt="Logo van Marijn met aandacht"
+              src="/hero-marijn.jpeg"
+              alt="Rustige mindfulness achtergrond met uitzicht over een tempelcomplex"
               width={1600}
-              height={500}
-              className="hero-logo"
+              height={1000}
+              className="hero-photo"
               priority
             />
           </div>
