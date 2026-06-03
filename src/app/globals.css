@@ -409,3 +409,63 @@ main {
     max-width: none;
   }
 }
+
+/* Versie 3: breder logo en agenda-overzicht */
+.header-inner {
+  grid-template-columns: auto 1fr;
+}
+
+.brand-logo {
+  width: 260px;
+  border-radius: 0;
+}
+
+.hero-card--logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+}
+
+.hero-logo {
+  border-radius: 0;
+}
+
+.agenda-list {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.agenda-card {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 2rem;
+  background: var(--surface);
+  border: 1px solid rgba(235, 225, 227, 0.8);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.agenda-card h2 {
+  margin: 0 0 0.5rem;
+  color: var(--text-strong);
+}
+
+code {
+  background: rgba(219, 225, 218, 0.35);
+  padding: 0.1rem 0.35rem;
+  border-radius: 8px;
+}
+
+@media (max-width: 960px) {
+  .header-inner,
+  .agenda-card {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-logo {
+    width: min(100%, 360px);
+  }
+}

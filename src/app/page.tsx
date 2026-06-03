@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { SectionTitle } from '@/components/SectionTitle';
 import { TrainingCard } from '@/components/TrainingCard';
-import { TrainingInquiryForm } from '@/components/TrainingInquiryForm';
 import { siteConfig, trainingen } from '@/data/site';
 
 export default function HomePage() {
@@ -12,26 +11,26 @@ export default function HomePage() {
         <div className="container hero-grid">
           <div className="hero-content">
             <p className="eyebrow">{siteConfig.tagline}</p>
-            <h1>Rust, aandacht en ruimte om bewuster te leven en te werken.</h1>
+            <h1>Meer rust, aandacht en balans in leven en werk.</h1>
             <p className="lead">
-              Een moderne, zachte website-opzet op basis van het bestaande logo. Geschikt als
-              informatieve bedrijfssite met trainingen, contact en een eenvoudige aanmelding.
+              Marijn met aandacht biedt mindfulness, trainingen en persoonlijke begeleiding voor
+              mensen en organisaties die bewuster willen omgaan met stress, drukte en verandering.
             </p>
             <div className="hero-actions">
               <Link href="/trainingen" className="button primary">
                 Bekijk trainingen
               </Link>
               <Link href="/contact" className="button secondary">
-                Plan een kennismaking
+                Neem contact op
               </Link>
             </div>
           </div>
-          <div className="hero-card">
+          <div className="hero-card hero-card--logo">
             <Image
               src="/logo.png"
-              alt="Logo van Marijn van der Lende"
-              width={920}
-              height={614}
+              alt="Logo van Marijn met aandacht"
+              width={1600}
+              height={500}
               className="hero-logo"
               priority
             />
@@ -39,35 +38,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section soft-section">
         <div className="container two-column">
           <SectionTitle
-            eyebrow="Over de website"
-            title="Een rustige uitstraling die past bij het logo"
-            text="De stijl van deze website is gebaseerd op de zachte tinten uit het logo: warm perzik, saliegroen, lichtgrijs en veel witruimte."
+            eyebrow="Met aandacht"
+            title="Praktisch, rustig en mensgericht"
+            text="Mindfulness hoeft niet ingewikkeld te zijn. Het gaat om leren opmerken wat er gebeurt, ruimte maken en van daaruit bewust reageren. In kleine stappen, met aandacht voor jouw eigen situatie."
           />
           <div className="info-panel">
             <p>
-              Deze versie is bewust eenvoudig gehouden. Zo blijft de website makkelijk te beheren,
-              snel te laden en later eenvoudig uit te breiden met extra pagina&apos;s of een echte
-              afspraakmodule.
+              De begeleiding is geschikt voor particulieren, professionals en teams. De toon is
+              rustig en toegankelijk, met oefeningen en inzichten die je direct kunt toepassen in
+              het dagelijks leven of op het werk.
             </p>
             <ul>
-              <li>Homepage met duidelijke introductie</li>
-              <li>Over-pagina voor werkwijze en achtergrond</li>
-              <li>Trainingenoverzicht met detailpagina&apos;s</li>
-              <li>Contactpagina en eenvoudige aanmelding</li>
+              <li>Mindfulness voor meer rust en bewustzijn</li>
+              <li>Trainingen voor particulieren en organisaties</li>
+              <li>Persoonlijke begeleiding op maat</li>
             </ul>
           </div>
         </div>
       </section>
 
-      <section className="section soft-section">
+      <section className="section">
         <div className="container">
           <SectionTitle
-            eyebrow="Trainingen"
-            title="Aanbod in een overzichtelijke opzet"
-            text="Hier kun je straks echte data, prijzen, locaties en extra uitleg invullen."
+            eyebrow="Aanbod"
+            title="Trainingen en begeleiding"
+            text="Een overzicht van de mogelijkheden. Data, locaties en praktische informatie kunnen eenvoudig worden aangevuld."
           />
           <div className="card-grid">
             {trainingen.map((training) => (
@@ -77,28 +75,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section soft-section">
         <div className="container quote-block">
           <p className="quote">
             “Aandacht brengt rust. Rust geeft ruimte. En in die ruimte ontstaat beweging.”
           </p>
-        </div>
-      </section>
-
-      <section className="section soft-section">
-        <div className="container two-column form-layout">
-          <div>
-            <SectionTitle
-              eyebrow="Kennismaken"
-              title="Eenvoudig aanmelden voor een training of gesprek"
-              text="Voor lage kosten is een formulier vaak slimmer dan direct een uitgebreide boekingsmodule."
-            />
-            <p className="muted">
-              Alleen als bezoekers echt tijdsloten moeten kiezen, is het slim om later bijvoorbeeld
-              Cal.com of Microsoft Bookings te koppelen.
-            </p>
-          </div>
-          <TrainingInquiryForm />
         </div>
       </section>
     </main>
