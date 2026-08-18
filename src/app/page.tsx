@@ -45,6 +45,7 @@ export default function HomePage() {
             eyebrow="Met aandacht"
             title="Praktisch, rustig en mensgericht"
             text="Mindfulness hoeft niet ingewikkeld te zijn. Het gaat om leren opmerken wat er gebeurt, ruimte maken en van daaruit bewust reageren. In kleine stappen, met aandacht voor jouw eigen situatie."
+            headingLevel="h2"
           />
           <div className="info-panel">
             <p>
@@ -67,6 +68,7 @@ export default function HomePage() {
             eyebrow="Aanbod"
             title="Trainingen en begeleiding"
             text="Een overzicht van de mogelijkheden. Data, locaties en praktische informatie kunnen eenvoudig worden aangevuld."
+            headingLevel="h2"
           />
           <div className="card-grid">
             {trainingen.map((training) => (
