@@ -52,6 +52,8 @@ The `@/` import alias is intended to resolve to `src/`. Preserve that convention
 ## Working safely
 
 - Inspect the working tree before editing and preserve unrelated user changes.
+- Do not run Git commands unless the user explicitly requests a specific Git operation. The user owns all branch changes, staging, commits, resets, merges, rebases, pushes, and remote configuration.
+- Never change branches or create commits on the user's behalf unless the user explicitly asks for that exact action in the current request.
 - Make the smallest coherent change that satisfies the request.
 - Never modify generated dependencies or add secrets to the repository.
 - For changes to contact information or training content, update `src/data/site.ts` first and verify every rendered use.
