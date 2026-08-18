@@ -1,5 +1,6 @@
 import { SectionTitle } from '@/components/SectionTitle';
 import { agendaItems } from '@/data/site';
+import Link from 'next/link';
 
 export default function AgendaPage() {
   return (
@@ -9,7 +10,7 @@ export default function AgendaPage() {
           <SectionTitle
             eyebrow="Agenda"
             title="Geplande trainingen en bijeenkomsten"
-            text="Hier kun je toekomstige data, locaties en praktische informatie plaatsen. Voor nu is de agenda ingericht als rustige startpagina met voorbeelditems."
+            text="Bekijk wanneer trainingen starten en welke bijeenkomsten op aanvraag beschikbaar zijn. Op de trainingspagina vind je alle praktische details."
             align="center"
           />
         </div>
@@ -24,7 +25,14 @@ export default function AgendaPage() {
                 <h2>{item.title}</h2>
                 <p className="card-target">{item.location}</p>
               </div>
-              <p>{item.description}</p>
+              <div>
+                <p>{item.description}</p>
+                {item.title.includes('Stress Reduction') ? (
+                  <Link href="/trainingen/mindfulness-basistraining" className="text-link">
+                    Bekijk planning en investering
+                  </Link>
+                ) : null}
+              </div>
             </article>
           ))}
         </div>

@@ -7,39 +7,77 @@ export default function OverMijPage() {
         <div className="container narrow">
           <SectionTitle
             eyebrow="Over mij"
-            title="Aandacht voor wie jij bent en wat jij nodig hebt"
-            text="Op deze pagina kun je meer vertellen over Marijn, haar achtergrond, ervaring en manier van werken. De tekst is bewust persoonlijk en rustig gehouden."
+            title="Welkom, mijn naam is Marijn van der Lende"
+            text="Ik ben mindfulnesstrainer en GGZ-agoog. Met aandacht, zonder oordeel en in een veilige omgeving begeleid ik je bij wat jij tegenkomt."
             align="center"
           />
         </div>
       </section>
 
       <section className="section">
-        <div className="container content-grid">
-          <div className="content-card">
-            <h2>Mijn benadering</h2>
+        <div className="container two-column">
+          <article className="content-card content-card--large">
+            <h2>Even voorstellen</h2>
             <p>
-              Ik werk vanuit rust, aandacht en vertrouwen. Niet door harder te duwen, maar door
-              samen te kijken wat er speelt en wat nodig is om meer ruimte te ervaren. Mindfulness
-              helpt om dichter bij jezelf te blijven, ook wanneer het druk of veeleisend is.
+              Ik woon in Winterswijk, in de Achterhoek, samen met mijn drie katten. In mijn vrije
+              tijd geniet ik van wandelen, de natuur, lekker eten en tijd doorbrengen met vrienden.
+              Ik geloof in de waarde van vertragen en aandacht hebben voor de kleine dingen die
+              vaak vanzelfsprekend lijken.
             </p>
-          </div>
-          <div className="content-card">
-            <h2>Voor mens en werk</h2>
+          </article>
+          <article className="content-card content-card--large">
+            <h2>Ervaring in de geestelijke gezondheidszorg</h2>
             <p>
-              De begeleiding richt zich op mensen die bewuster willen leven en werken. Dat kan
-              individueel zijn, maar ook binnen teams of organisaties waar aandacht voor welzijn,
-              focus en veerkracht belangrijk is.
+              Sinds 2013 werk ik in de geestelijke gezondheidszorg. In mijn werk heb ik veel mensen
+              begeleid die vastliepen door stress, ingrijpende gebeurtenissen of psychische
+              klachten. Juist daar zag ik hoe gemakkelijk we het contact met onszelf kunnen
+              verliezen.
             </p>
-          </div>
-          <div className="content-card">
-            <h2>Praktisch en toegankelijk</h2>
+          </article>
+        </div>
+      </section>
+
+      <section className="section soft-section">
+        <div className="container two-column">
+          <article className="content-card content-card--large">
+            <h2>Mijn weg naar mindfulness</h2>
             <p>
-              De trainingen zijn laagdrempelig en praktisch. Er is ruimte voor oefening, reflectie
-              en persoonlijke vragen. Zo wordt mindfulness geen theorie, maar iets dat je kunt
-              meenemen in je dagelijkse leven.
+              Ook in mijn eigen leven heb ik ervaren hoe snel je op de automatische piloot terecht
+              kunt komen. Mindfulness hielp mij om opnieuw stil te staan, beter te luisteren naar
+              mijn lichaam en met meer aandacht aanwezig te zijn in het moment.
             </p>
-          </div>
+            <p>
+              Niet omdat het leven daardoor altijd gemakkelijk is, maar omdat er meer ruimte
+              ontstaat om bewust te kiezen hoe je met jezelf en met moeilijke situaties omgaat.
+            </p>
+          </article>
+          <article className="content-card content-card--large">
+            <h2>Opleiding en achtergrond</h2>
+            <p>
+              Mijn eigen ervaring, gecombineerd met mijn achtergrond in de geestelijke
+              gezondheidszorg, heeft ertoe geleid dat ik de postacademische opleiding tot
+              mindfulnesstrainer (MBSR/MBCT) aan het Radboudumc Expertisecentrum voor Mindfulness
+              heb gevolgd.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container narrow">
+          <article className="content-card content-card--large">
+            <h2>Mijn manier van begeleiden</h2>
+            <p>
+              In mijn trainingen vind ik het belangrijk dat je jezelf niets hoeft te bewijzen.
+              Mindfulness gaat voor mij niet over ontspannen of ‘je hoofd leegmaken’. Het gaat over
+              leren aanwezig zijn bij wat er op dit moment is, met een open en nieuwsgierige
+              houding. Van daaruit ontstaat vaak meer rust, inzicht en keuzevrijheid.
+            </p>
+            <p>
+              Ik begeleid je met aandacht, zonder oordeel en in een veilige omgeving waarin ruimte
+              is voor jouw eigen ervaring.
+            </p>
+          </article>
         </div>
       </section>
     </main>
