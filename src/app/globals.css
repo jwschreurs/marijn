@@ -149,6 +149,7 @@ main {
 
 .hero-content h1,
 .section-title h1,
+.section-title h2,
 .card h2,
 .content-card h2 {
   color: var(--text-strong);
@@ -162,7 +163,8 @@ main {
   max-width: 12ch;
 }
 
-.section-title h1 {
+.section-title h1,
+.section-title h2 {
   font-size: clamp(2rem, 4vw, 3.4rem);
 }
 

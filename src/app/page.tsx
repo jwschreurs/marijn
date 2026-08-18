@@ -45,6 +45,7 @@ export default function HomePage() {
             eyebrow="Over de website"
             title="Een rustige uitstraling die past bij het logo"
             text="De stijl van deze website is gebaseerd op de zachte tinten uit het logo: warm perzik, saliegroen, lichtgrijs en veel witruimte."
+            headingLevel="h2"
           />
           <div className="info-panel">
             <p>
@@ -68,6 +69,7 @@ export default function HomePage() {
             eyebrow="Trainingen"
             title="Aanbod in een overzichtelijke opzet"
             text="Hier kun je straks echte data, prijzen, locaties en extra uitleg invullen."
+            headingLevel="h2"
           />
           <div className="card-grid">
             {trainingen.map((training) => (
@@ -92,6 +94,7 @@ export default function HomePage() {
               eyebrow="Kennismaken"
               title="Eenvoudig aanmelden voor een training of gesprek"
               text="Voor lage kosten is een formulier vaak slimmer dan direct een uitgebreide boekingsmodule."
+              headingLevel="h2"
             />
             <p className="muted">
               Alleen als bezoekers echt tijdsloten moeten kiezen, is het slim om later bijvoorbeeld
