@@ -3,13 +3,20 @@ type SectionTitleProps = {
   title: string;
   text?: string;
   align?: 'left' | 'center';
+  headingLevel?: 'h1' | 'h2';
 };
 
-export function SectionTitle({ eyebrow, title, text, align = 'left' }: SectionTitleProps) {
+export function SectionTitle({
+  eyebrow,
+  title,
+  text,
+  align = 'left',
+  headingLevel: Heading = 'h1',
+}: SectionTitleProps) {
   return (
     <div className={`section-title section-title--${align}`}>
       {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
-      <h1>{title}</h1>
+      <Heading>{title}</Heading>
       {text ? <p className="section-text">{text}</p> : null}
     </div>
   );

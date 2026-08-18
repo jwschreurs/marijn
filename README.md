@@ -1,16 +1,24 @@
-# Marijn van der Lende - website v2
+# Marijn met aandacht
 
-## Starten
+Nederlandstalige website voor mindfulness, trainingen en begeleiding, gebouwd met Next.js, React en TypeScript.
+
+## Lokaal draaien
+
+Vereist Node.js 20.9 of nieuwer.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open daarna:
+Open daarna [http://localhost:3000](http://localhost:3000).
 
-```text
-http://localhost:3000
+## Controles
+
+```bash
+npm run typecheck
+npm run lint
+npm run build
 ```
 
 ## Wat is aangepast in v2
@@ -20,7 +28,7 @@ http://localhost:3000
 - Training detailpagina's toegevoegd
 - Contactpagina toegevoegd
 - Nieuwere Next.js en React versies
-- ESLint-pakketten verwijderd om de oude deprecated npm-waarschuwingen weg te halen
+- TypeScript- en ESLint-controles toegevoegd
 
 ## Pagina's
 
@@ -31,3 +39,7 @@ http://localhost:3000
 - /trainingen/workshop-voor-teams
 - /trainingen/individuele-begeleiding
 - /contact
+
+## Deployment
+
+De applicatie is geschikt voor deployment op Vercel. Koppel de GitHub-repository aan een Vercel-project; pushes naar de gekozen productiebranch kunnen vervolgens automatisch worden uitgerold.
