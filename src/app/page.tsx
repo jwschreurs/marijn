@@ -49,7 +49,9 @@ export default function HomePage() {
           />
           <div className="info-panel">
             <p>
-                Mindfulness hoeft niet ingewikkeld te zijn. Het gaat om leren opmerken, ruimte maken en bewust reageren. In kleine stappen,met aandacht voor jouw eigen situatie.
+              Het aanbod is geschikt voor particulieren en organisaties. De toon is
+              rustig en toegankelijk, met oefeningen en inzichten die je direct kunt toepassen in
+              het dagelijks leven of op het werk.
             </p>
             <ul>
               <li>Mindfulness voor meer rust en bewustzijn</li>
@@ -64,7 +66,6 @@ export default function HomePage() {
           <SectionTitle
             eyebrow="Aanbod"
             title="Trainingen"
-            text="Een overzicht van de mogelijkheden. Data, locaties en praktische informatie kunnen eenvoudig worden aangevuld."
             headingLevel="h2"
           />
           <div className="card-grid">

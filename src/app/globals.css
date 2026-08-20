@@ -161,6 +161,10 @@ main {
   align-items: stretch;
 }
 
+.section-title + .card-grid {
+  margin-top: 2rem;
+}
+
 .page-hero {
   padding-bottom: 2rem;
 }
@@ -685,6 +689,10 @@ main {
 .certification-link {
   display: inline-flex;
   border-radius: 10px;
+}
+
+.certification-link:last-child {
+  margin-left: auto;
 }
 
 .certification-link:focus-visible {

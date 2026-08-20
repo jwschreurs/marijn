@@ -57,8 +57,10 @@ export const siteConfig = {
   name: 'Marijn met aandacht',
   tagline: 'Mindfulness voor mens en werk',
   email: 'info@marijnmetaandacht.nl',
-  phone: '06 12 34 56 78',
+  phone: '06 13 95 75 83',
   kvk: '42136968',
+  btwId: 'NL005527527B41',
+  agbCode: '90122395',
   location: 'Regio Twente en op locatie',
   intro:
     'Mindfulness en training voor meer rust, balans en bewustzijn in leven en werk.',
