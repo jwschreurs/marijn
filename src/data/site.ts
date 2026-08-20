@@ -61,7 +61,7 @@ export const siteConfig = {
   kvk: '42136968',
   btwId: 'NL005527527B41',
   agbCode: '90122395',
-  location: 'Regio Twente en op locatie',
+  location: 'Regio Achterhoek en op locatie in overleg',
   intro:
     'Mindfulness en training voor meer rust, balans en bewustzijn in leven en werk.',
 };
@@ -239,13 +239,6 @@ export const agendaItems: AgendaItem[] = [
     location: 'Locatie wordt binnenkort bekendgemaakt',
     description:
       'Acht woensdagbijeenkomsten in een vaste ochtend- of avondgroep, met een gezamenlijke stiltedag op zondag 15 november.',
-  },
-  {
-    title: 'Introductieworkshop mindfulness',
-    date: 'Op aanvraag',
-    location: 'Op locatie of in overleg',
-    description:
-      'Een laagdrempelige kennismaking met mindfulness, geschikt voor particulieren, teams en organisaties.',
   },
   {
     title: 'Mindfulness voor organisaties',

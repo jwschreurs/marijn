@@ -39,10 +39,6 @@ export default function ContactPage() {
               <br />
               {siteConfig.location}
             </p>
-            <p className="muted">
-              De contactgegevens zijn placeholders. Deze kun je aanpassen in
-              <code> src/data/site.ts</code>.
-            </p>
           </div>
           <TrainingInquiryForm />
         </div>

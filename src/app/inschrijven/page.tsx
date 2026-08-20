@@ -16,7 +16,7 @@ export default function RegistrationPage() {
           <SectionTitle
             eyebrow="MBSR-training"
             title="Inschrijfformulier"
-            text="Vul het formulier in ter voorbereiding op het persoonlijke intakegesprek. Deze versie is bedoeld om de inhoud en vormgeving te bekijken."
+            text="Vul het formulier in ter voorbereiding op je inschrijving en het persoonlijke intakegesprek."
             align="center"
           />
         </div>
