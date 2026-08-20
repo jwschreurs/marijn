@@ -23,11 +23,17 @@ export function Footer() {
         <div>
           <p className="footer-title">Contact</p>
           <p>
+            <strong>E-mail:</strong>{' '}
             <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
             <br />
+            <strong>Telefoon:</strong>{' '}
             <a href={`tel:${siteConfig.phone.replace(/\s+/g, '')}`}>{siteConfig.phone}</a>
             <br />
-            KvK {siteConfig.kvk}
+            <strong>KvK:</strong> {siteConfig.kvk}
+            <br />
+            <strong>BTW-id:</strong> {siteConfig.btwId}
+            <br />
+            <strong>AGB-code:</strong> {siteConfig.agbCode}
           </p>
         </div>
         <div className="footer-certifications" aria-label="Keurmerken">

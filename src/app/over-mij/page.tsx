@@ -7,8 +7,8 @@ export default function OverMijPage() {
         <div className="container narrow">
           <SectionTitle
             eyebrow="Over mij"
-            title="Welkom, mijn naam is Marijn van der Lende"
-            text="Ik ben mindfulnesstrainer en GGZ-agoog. Met aandacht, zonder oordeel en in een veilige omgeving begeleid ik je bij wat jij tegenkomt."
+            title="Welkom! Mijn naam is Marijn van der Lende"
+            text="Ik ben mindfulnesstrainer en GGZ-agoog."
             align="center"
           />
         </div>
@@ -29,7 +29,7 @@ export default function OverMijPage() {
             <h2>Ervaring in de geestelijke gezondheidszorg</h2>
             <p>
               Sinds 2013 werk ik in de geestelijke gezondheidszorg. In mijn werk heb ik veel mensen
-              begeleid die vastliepen door stress, ingrijpende gebeurtenissen of psychische
+              begeleid die vast zijn gelopen door stress, ingrijpende gebeurtenissen of psychische
               klachten. Juist daar zag ik hoe gemakkelijk we het contact met onszelf kunnen
               verliezen.
             </p>
@@ -43,18 +43,18 @@ export default function OverMijPage() {
             <h2>Mijn weg naar mindfulness</h2>
             <p>
               Ook in mijn eigen leven heb ik ervaren hoe snel je op de automatische piloot terecht
-              kunt komen. Mindfulness hielp mij om opnieuw stil te staan, beter te luisteren naar
+              kunt komen. Mindfulness helpt mij om opnieuw stil te staan, beter te luisteren naar
               mijn lichaam en met meer aandacht aanwezig te zijn in het moment.
             </p>
             <p>
-              Niet omdat het leven daardoor altijd gemakkelijk is, maar omdat er meer ruimte
-              ontstaat om bewust te kiezen hoe je met jezelf en met moeilijke situaties omgaat.
+              Niet omdat het leven daardoor makkelijker is, maar omdat er meer ruimte ontstaat om
+              bewust te kiezen hoe je met jezelf en met moeilijke situaties omgaat.
             </p>
           </article>
           <article className="content-card content-card--large">
             <h2>Opleiding en achtergrond</h2>
             <p>
-              Mijn eigen ervaring, gecombineerd met mijn achtergrond in de geestelijke
+              Die ervaring, gecombineerd met mijn achtergrond in de geestelijke
               gezondheidszorg, heeft ertoe geleid dat ik de postacademische opleiding tot
               mindfulnesstrainer (MBSR/MBCT) aan het Radboudumc Expertisecentrum voor Mindfulness
               heb gevolgd.
