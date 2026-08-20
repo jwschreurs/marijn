@@ -507,6 +507,19 @@ main {
   margin-top: 1rem;
 }
 
+.form-question-help {
+  max-width: 68ch;
+  margin: 0.75rem 0 0;
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.registration-form .follow-up-field {
+  margin-top: 1.25rem;
+}
+
 .choice-group {
   display: flex;
   flex-wrap: wrap;
@@ -532,6 +545,17 @@ main {
   height: 1.1rem;
   margin: 0;
   accent-color: #d69a76;
+}
+
+.privacy-copy {
+  display: grid;
+  gap: 1rem;
+}
+
+.privacy-copy p {
+  max-width: 72ch;
+  margin: 0;
+  line-height: 1.7;
 }
 
 .form-submit-panel {

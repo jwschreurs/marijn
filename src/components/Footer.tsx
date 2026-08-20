@@ -18,6 +18,13 @@ export function Footer() {
             <Link href="/trainingen">Trainingen</Link>
             <Link href="/agenda">Agenda</Link>
             <Link href="/contact">Contact</Link>
+            <a
+              href="/documenten/vmbn-ethische-gedragscode.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Ethische gedragscode VMBN (pdf)
+            </a>
           </div>
         </div>
         <div>
