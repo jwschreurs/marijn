@@ -70,8 +70,7 @@ main {
   position: sticky;
   top: 0;
   z-index: 20;
-  backdrop-filter: blur(14px);
-  background: rgba(251, 247, 248, 0.78);
+  background: var(--background);
   border-bottom: 1px solid rgba(235, 225, 227, 0.8);
 }
 
@@ -152,10 +151,14 @@ main {
   align-items: center;
 }
 
-.card-grid,
 .content-grid,
 .footer-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.card-grid {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  align-items: stretch;
 }
 
 .page-hero {
@@ -287,6 +290,12 @@ main {
   padding: 2rem;
 }
 
+.card {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+}
+
 .hero-logo {
   border-radius: 20px;
 }
@@ -322,6 +331,12 @@ main {
   margin-top: 1rem;
   color: var(--text-strong);
   font-weight: 600;
+}
+
+.card .text-link {
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: 1rem;
 }
 
 .contact-form {
@@ -361,6 +376,187 @@ main {
   color: #8b8688;
 }
 
+.registration-hero {
+  padding-bottom: 2.5rem;
+}
+
+.registration-section {
+  padding-top: 1rem;
+}
+
+.registration-container {
+  max-width: 900px;
+}
+
+.registration-form {
+  display: grid;
+  gap: 2rem;
+}
+
+.form-section,
+.form-submit-panel {
+  background: var(--surface);
+  border: 1px solid rgba(235, 225, 227, 0.9);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.form-section {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.form-section-header {
+  margin-bottom: 2rem;
+}
+
+.form-section-header h2,
+.form-submit-panel h2 {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  line-height: 1.2;
+}
+
+.form-section-header p:last-child {
+  max-width: 62ch;
+  margin: 0.75rem 0 0;
+  line-height: 1.7;
+}
+
+.registration-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.field-wide {
+  grid-column: 1 / -1;
+}
+
+.registration-form label,
+.form-question legend {
+  color: var(--text-strong);
+  font-weight: 600;
+}
+
+.registration-form label {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.registration-form input:not([type='radio']),
+.registration-form textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 16px;
+  padding: 0.95rem 1rem;
+  color: var(--text);
+  font: inherit;
+}
+
+.registration-form textarea {
+  min-height: 8rem;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.registration-form input:focus-visible,
+.registration-form textarea:focus-visible {
+  outline: 3px solid rgba(238, 205, 173, 0.45);
+  border-color: #dba882;
+}
+
+.question-list {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.form-question {
+  min-width: 0;
+  margin: 0;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: rgba(245, 239, 235, 0.42);
+}
+
+.form-question legend {
+  max-width: 100%;
+  padding: 0 0.4rem;
+  line-height: 1.5;
+}
+
+.form-question legend span {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #9e8d7f;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.form-question > input,
+.form-question > textarea,
+.choice-group {
+  margin-top: 1rem;
+}
+
+.choice-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.registration-form .choice-option {
+  display: inline-flex;
+  min-height: 44px;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.choice-option input {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: 0;
+  accent-color: #d69a76;
+}
+
+.form-submit-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.5rem 2rem;
+}
+
+.form-submit-panel .form-note {
+  max-width: 58ch;
+  margin-top: 0.5rem;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.62;
+  transform: none;
+  box-shadow: none;
+}
+
+.training-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
 .quote-block {
   text-align: center;
 }
@@ -373,6 +569,14 @@ main {
 
 .content-card--large {
   min-height: 100%;
+}
+
+.training-section {
+  margin-top: 2.5rem;
+}
+
+.training-section h2 {
+  font-size: 1.5rem;
 }
 
 .detail-stack {
@@ -468,6 +672,41 @@ main {
   gap: 0.55rem;
 }
 
+.footer-certifications {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(235, 225, 227, 0.8);
+}
+
+.certification-link {
+  display: inline-flex;
+  border-radius: 10px;
+}
+
+.certification-link:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 4px;
+}
+
+.certification-logo {
+  display: block;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.certification-logo--vmbn {
+  max-width: 90px;
+}
+
+.certification-logo--smr {
+  max-width: 210px;
+}
+
 @media (max-width: 960px) {
   .header-inner {
     grid-template-columns: 1fr;
@@ -527,6 +766,28 @@ main {
 
   .schedule-list strong {
     text-align: left;
+  }
+
+  .registration-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .field-wide {
+    grid-column: auto;
+  }
+
+  .choice-group,
+  .form-submit-panel {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .registration-form .choice-option {
+    border-radius: 14px;
+  }
+
+  .form-submit-panel .button {
+    width: 100%;
   }
 }
 
@@ -767,6 +1028,30 @@ code {
     max-width: 620px;
 }
 
+.hero--training::before {
+    background: rgba(42, 46, 48, 0.08);
+}
+
+.hero--training .hero-content {
+    width: min(100%, 590px);
+    margin-left: auto;
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    background: rgba(251, 247, 245, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(235, 225, 227, 0.9);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.hero--training .hero-content h1 {
+    max-width: 13ch;
+    font-size: clamp(2.6rem, 4vw, 4rem);
+}
+
+.training-hero-photo {
+    object-position: left center;
+}
+
 @media (max-width: 768px) {
     .hero {
         min-height: 560px;
@@ -778,5 +1063,22 @@ code {
 
     .hero-photo {
         object-position: center;
+    }
+
+    .hero--training {
+        align-items: flex-start;
+    }
+
+    .hero--training::before {
+        background: rgba(42, 46, 48, 0.06);
+    }
+
+    .hero--training .hero-content {
+        background: rgba(251, 247, 245, 0.9);
+        backdrop-filter: blur(8px);
+    }
+
+    .training-hero-photo {
+        object-position: left center;
     }
 }

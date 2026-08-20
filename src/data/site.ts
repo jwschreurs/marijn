@@ -7,6 +7,12 @@ export type Training = {
   description: string;
   highlights: string[];
   details?: string[];
+  contentSections?: Array<{
+    title: string;
+    paragraphs: TrainingContentParagraph[];
+    items?: string[];
+    closingParagraphs?: TrainingContentParagraph[];
+  }>;
   schedule?: {
     season: string;
     location: string;
@@ -34,6 +40,12 @@ export type Training = {
   };
 };
 
+export type TrainingContentParagraph = {
+  text: string;
+  emphasizedPhrases?: string[];
+  strong?: boolean;
+};
+
 export type AgendaItem = {
   title: string;
   date: string;
@@ -46,9 +58,10 @@ export const siteConfig = {
   tagline: 'Mindfulness voor mens en werk',
   email: 'info@marijnmetaandacht.nl',
   phone: '06 12 34 56 78',
+  kvk: '42136968',
   location: 'Regio Twente en op locatie',
   intro:
-    'Mindfulness, training en persoonlijke begeleiding voor meer rust, balans en bewustzijn in leven en werk.',
+    'Mindfulness en training voor meer rust, balans en bewustzijn in leven en werk.',
 };
 
 export const trainingen: Training[] = [
@@ -116,25 +129,104 @@ export const trainingen: Training[] = [
   },
   {
     slug: 'mindfulness-op-het-werk',
-    title: 'Mindfulness op het werk',
-    duration: 'Dagdeel of maatwerk',
-    audience: 'Voor teams en organisaties',
+    title: 'Mindfulness voor organisaties',
+    duration: '8 weken en een stiltedag',
+    audience: 'Voor organisaties en teams',
     summary:
-      'Een praktische training voor meer focus, veerkracht en aandacht binnen het werk.',
+      'Een geprotocolleerde MBSR-training voor meer aandacht, bewustzijn en veerkracht in werk en dagelijks leven.',
     description:
-      'Deze training is bedoeld voor organisaties die aandacht willen geven aan welzijn, werkdruk en bewuste samenwerking. De inhoud kan worden afgestemd op de vraag van het team, met ruimte voor praktische oefeningen en herkenbare situaties uit de werkpraktijk.',
-    highlights: ['Geschikt voor teams', 'Maatwerk mogelijk', 'Direct toepasbaar in de werkdag'],
-  },
-  {
-    slug: 'individuele-begeleiding',
-    title: 'Individuele begeleiding',
-    duration: 'Op afspraak',
-    audience: 'Persoonlijk traject',
-    summary:
-      'Persoonlijke begeleiding afgestemd op jouw vraag, tempo en dagelijkse praktijk.',
-    description:
-      'Soms is er behoefte aan individuele aandacht. In een persoonlijk traject kijken we samen naar wat er speelt en wat jou kan helpen om meer rust, helderheid en balans te ervaren. De begeleiding is praktisch, rustig en afgestemd op jouw situatie.',
-    highlights: ['Eén-op-één begeleiding', 'Ruimte voor jouw vraag', 'Rustige en persoonlijke aanpak'],
+      'Werk vraagt veel van mensen. Hoge werkdruk, voortdurende prikkels, volle agenda’s en het steeds schakelen tussen verschillende taken kunnen ervoor zorgen dat we vooral blijven doorgaan. Juist in een omgeving waarin veel van medewerkers wordt gevraagd, kan het waardevol zijn om bewust aandacht te leren geven aan wat er speelt.',
+    details: [
+      'Met mindfulness ontwikkelen deelnemers vaardigheden om met meer aandacht en bewustzijn om te gaan met hun werk en dagelijks leven. Ze leren onder andere automatische reactiepatronen herkennen, eerder signalen van spanning opmerken en bewuster omgaan met gedachten, gevoelens en lichamelijke signalen.',
+    ],
+    highlights: [],
+    contentSections: [
+      {
+        title: 'Wat kan mindfulness brengen?',
+        paragraphs: [
+          {
+            text: 'Mindfulness neemt moeilijke situaties of werkdruk niet weg. Wel kan het helpen om er met meer bewustzijn, mildheid en veerkracht mee om te gaan.',
+          },
+          { text: 'Een MBSR-training kan deelnemers ondersteunen bij:' },
+        ],
+        items: [
+          'het eerder herkennen van stresssignalen',
+          'het bewuster omgaan met werkdruk en wat het werk van hen vraagt',
+          'minder meegesleept worden door piekergedachten',
+          'bewuster reageren in plaats van automatisch handelen',
+          'beter omgaan met lastige gevoelens en situaties',
+          'meer contact ervaren met het lichaam en lichamelijke signalen',
+          'het ontwikkelen van meer rust, aandacht en balans',
+        ],
+      },
+      {
+        title: 'Geprotocolleerde MBSR-training',
+        paragraphs: [
+          {
+            text: 'Vanuit Marijn met aandacht bied ik een 8-weekse, geprotocolleerde MBSR-training (Mindfulness-Based Stress Reduction) aan voor organisaties en teams.',
+            emphasizedPhrases: [
+              'Marijn met aandacht',
+              'MBSR-training (Mindfulness-Based Stress Reduction)',
+            ],
+          },
+          {
+            text: 'De training bestaat uit acht wekelijkse bijeenkomsten en een stiltedag. Deelnemers krijgen praktische oefeningen en handvatten die zij niet alleen tijdens de training, maar ook in hun dagelijks leven en op het werk kunnen toepassen.',
+          },
+          {
+            text: 'De training kan bijvoorbeeld worden ingezet binnen het beleid rondom duurzame inzetbaarheid, vitaliteit en medewerkerswelzijn.',
+            emphasizedPhrases: [
+              'duurzame inzetbaarheid, vitaliteit en medewerkerswelzijn',
+            ],
+          },
+          {
+            text: 'Ik geloof daarbij niet in mindfulness als oplossing voor alles. Mindfulness gaat niet over het wegnemen van stressvolle omstandigheden, maar over het ontwikkelen van meer bewustzijn in hoe we ons daartoe verhouden.',
+          },
+        ],
+      },
+      {
+        title: 'Investering en tarieven',
+        paragraphs: [
+          {
+            text: 'De investering voor een MBSR-training voor organisaties wordt in overleg bepaald en is afhankelijk van onder andere de groepsgrootte, locatie en eventuele specifieke wensen van de organisatie.',
+          },
+          {
+            text: 'Ik bied de mogelijkheid om de training op locatie binnen de organisatie te verzorgen. Eventuele reis- en locatiegebonden kosten worden vooraf in overleg besproken.',
+            emphasizedPhrases: ['op locatie binnen de organisatie'],
+          },
+        ],
+      },
+      {
+        title: 'De investering is inclusief',
+        paragraphs: [
+          { text: 'Deelnemers ontvangen gedurende het volledige traject:' },
+        ],
+        items: [
+          'een persoonlijk kennismakings- en intakegesprek',
+          'acht wekelijkse MBSR-bijeenkomsten',
+          'een gezamenlijke stiltedag',
+          'een werkboek en ondersteunend oefenmateriaal',
+          'audiobestanden voor de thuisbeoefening',
+          'begeleiding gedurende het gehele trainingsprogramma',
+        ],
+        closingParagraphs: [
+          {
+            text: 'Wil je weten wat een MBSR-training binnen jouw organisatie zou kosten? Neem gerust contact op voor een vrijblijvend gesprek en een passend voorstel.',
+          },
+        ],
+      },
+      {
+        title: 'Interesse voor jouw organisatie?',
+        paragraphs: [
+          {
+            text: 'Wil je onderzoeken wat een MBSR-training kan betekenen voor jouw medewerkers of team? Ik denk graag mee over een passend aanbod en de mogelijkheden binnen jouw organisatie.',
+          },
+          {
+            text: 'Neem gerust contact op met Marijn met aandacht.',
+            strong: true,
+          },
+        ],
+      },
+    ],
   },
 ];
 
@@ -154,10 +246,10 @@ export const agendaItems: AgendaItem[] = [
       'Een laagdrempelige kennismaking met mindfulness, geschikt voor particulieren, teams en organisaties.',
   },
   {
-    title: 'Training mindfulness op het werk',
+    title: 'Mindfulness voor organisaties',
     date: 'In overleg',
     location: 'Bij de organisatie op locatie',
     description:
-      'Een praktische sessie voor teams rond aandacht, werkdruk, focus en veerkracht.',
+      'Een 8-weekse MBSR-training voor teams rond aandacht, werkdruk, bewustzijn en veerkracht.',
   },
 ];
