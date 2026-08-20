@@ -10,7 +10,7 @@ export default function ContactPage() {
           <SectionTitle
             eyebrow="Contact"
             title="Neem contact op voor een kennismaking"
-            text="Wil je meer weten over een training, individuele begeleiding of een mogelijkheid voor jouw organisatie? Laat gerust een bericht achter."
+            text="Wil je meer weten over een training of de mogelijkheden voor jouw organisatie? Laat gerust een bericht achter."
             align="center"
           />
         </div>

@@ -2,7 +2,21 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { SectionTitle } from '@/components/SectionTitle';
 import { TrainingInquiryForm } from '@/components/TrainingInquiryForm';
-import { trainingen } from '@/data/site';
+import { trainingen, type TrainingContentParagraph } from '@/data/site';
+
+function TrainingParagraph({ paragraph }: { paragraph: TrainingContentParagraph }) {
+  const phrases = paragraph.emphasizedPhrases ?? [];
+  const pattern = phrases.length
+    ? new RegExp(`(${phrases.map((phrase) => phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'g')
+    : null;
+  const content = pattern
+    ? paragraph.text.split(pattern).map((part, index) =>
+        phrases.includes(part) ? <strong key={`${part}-${index}`}>{part}</strong> : part,
+      )
+    : paragraph.text;
+
+  return <p>{paragraph.strong ? <strong>{content}</strong> : content}</p>;
+}
 
 export function generateStaticParams() {
   return trainingen.map((training) => ({ slug: training.slug }));
@@ -39,14 +53,41 @@ export default async function TrainingDetailPage({
             <p className="card-target">{training.audience}</p>
             <p>{training.description}</p>
             {training.details?.map((detail) => <p key={detail}>{detail}</p>)}
-            <ul className="feature-list">
-              {training.highlights.map((highlight) => (
-                <li key={highlight}>{highlight}</li>
-              ))}
-            </ul>
-            <Link href="/contact" className="button secondary inline-button">
-              Eerst een vraag stellen
-            </Link>
+            {training.highlights.length > 0 ? (
+              <ul className="feature-list">
+                {training.highlights.map((highlight) => (
+                  <li key={highlight}>{highlight}</li>
+                ))}
+              </ul>
+            ) : null}
+            {training.contentSections?.map((section) => (
+              <section className="training-section" key={section.title}>
+                <h2>{section.title}</h2>
+                {section.paragraphs.map((paragraph) => (
+                  <TrainingParagraph key={paragraph.text} paragraph={paragraph} />
+                ))}
+                {section.items ? (
+                  <ul className="feature-list">
+                    {section.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                ) : null}
+                {section.closingParagraphs?.map((paragraph) => (
+                  <TrainingParagraph key={paragraph.text} paragraph={paragraph} />
+                ))}
+              </section>
+            ))}
+            <div className="training-actions">
+              {training.slug === 'mindfulness-basistraining' ? (
+                <Link href="/inschrijven" className="button primary">
+                  Inschrijven voor deze training
+                </Link>
+              ) : null}
+              <Link href="/contact" className="button secondary">
+                Eerst een vraag stellen
+              </Link>
+            </div>
           </article>
           <div>
             <TrainingInquiryForm defaultInterest={training.title} />

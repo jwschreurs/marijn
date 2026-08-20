@@ -24,7 +24,7 @@ export default function HomePage() {
                       <p className="eyebrow">{siteConfig.tagline}</p>
                       <h1>Meer rust, aandacht en balans in leven en werk.</h1>
                       <p className="lead">
-                          Marijn met aandacht biedt mindfulness, trainingen en persoonlijke begeleiding voor
+                          Marijn met aandacht biedt mindfulness en trainingen voor
                           mensen en organisaties die bewuster willen omgaan met stress, drukte en verandering.
                       </p>
                       <div className="hero-actions">
@@ -49,14 +49,11 @@ export default function HomePage() {
           />
           <div className="info-panel">
             <p>
-              De begeleiding is geschikt voor particulieren, professionals en teams. De toon is
-              rustig en toegankelijk, met oefeningen en inzichten die je direct kunt toepassen in
-              het dagelijks leven of op het werk.
+                Mindfulness hoeft niet ingewikkeld te zijn. Het gaat om leren opmerken, ruimte maken en bewust reageren. In kleine stappen,met aandacht voor jouw eigen situatie.
             </p>
             <ul>
               <li>Mindfulness voor meer rust en bewustzijn</li>
-              <li>Trainingen voor particulieren en organisaties</li>
-              <li>Persoonlijke begeleiding op maat</li>
+              <li>Trainingen voor organisaties</li>
             </ul>
           </div>
         </div>
@@ -66,7 +63,7 @@ export default function HomePage() {
         <div className="container">
           <SectionTitle
             eyebrow="Aanbod"
-            title="Trainingen en begeleiding"
+            title="Trainingen"
             text="Een overzicht van de mogelijkheden. Data, locaties en praktische informatie kunnen eenvoudig worden aangevuld."
             headingLevel="h2"
           />
@@ -78,10 +75,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section soft-section">
+      <section className="section soft-section" aria-label="Inspirerende quote">
         <div className="container quote-block">
           <p className="quote">
-            “Aandacht brengt rust. Rust geeft ruimte. En in die ruimte ontstaat beweging.”
+            “I never said it would be easy, I only said it would be worth it.” – Mae West
           </p>
         </div>
       </section>
