@@ -234,7 +234,7 @@ export const trainingen: Training[] = [
 export const agendaItems: AgendaItem[] = [
   {
     title: 'Mindfulness Based Stress Reduction (MBSR)',
-    date: '7 oktober t/m 25 november 2026',
+    date: '4 november t/m 23 december',
     location: 'Locatie wordt binnenkort bekendgemaakt',
     description:
       'Acht woensdagbijeenkomsten in een vaste ochtend- of avondgroep, met een stiltedag op zondag 15 november.',
