@@ -71,41 +71,40 @@ export const trainingen: Training[] = [
     slug: 'mindfulness-basistraining',
     title: 'Mindfulness Based Stress Reduction (MBSR)',
     duration: '8 weken en een stiltedag',
-    audience: 'Twee vaste groepen van gemiddeld 8 tot 10 deelnemers',
+    audience: 'Een vaste groep van gemiddeld 8 tot 10 deelnemers',
     summary:
       'Leer stap voor stap hoe je mindfulness kunt toepassen in je dagelijks leven.',
     description:
       'Tijdens de 8-weekse Mindfulness Based Stress Reduction-training wisselen uitleg, meditatieoefeningen, beweging en reflectie elkaar af. Je leert stap voor stap hoe je mindfulness kunt toepassen in je dagelijks leven. Ook oefen je thuis 45 tot 60 minuten per dag tussen de bijeenkomsten door.',
     highlights: [
       'Acht bijeenkomsten van 2,5 uur',
-      'Een gezamenlijke stiltedag van 6 uur',
+      'Een stiltedag van 6 uur',
       'Een persoonlijk intakegesprek',
       'Thuis oefenen met een werkboek en audiobestanden',
     ],
     details: [
       'Voorafgaand aan de training vindt een intakegesprek plaats waarin we samen bespreken of deelname op dit moment passend is.',
-      'De training volg je in een vaste ochtend- of avondgroep van gemiddeld 8 tot 10 personen.',
+      'De training volg je in een vaste ochtend groep van gemiddeld 8 tot 10 personen.',
     ],
     schedule: {
       season: 'Najaar 2026',
       location: 'Locatie wordt binnenkort bekendgemaakt',
       groups: [
-        { name: 'Ochtendgroep', time: '10.00-12.30' },
-        { name: 'Avondgroep', time: '19.30-22.00' },
+        { name: 'Ochtendgroep', time: '09.30-12.00' },
       ],
       meetings: [
-        { label: 'Bijeenkomst 1', date: 'Woensdag 7 oktober' },
-        { label: 'Bijeenkomst 2', date: 'Woensdag 14 oktober' },
-        { label: 'Bijeenkomst 3', date: 'Woensdag 21 oktober' },
-        { label: 'Bijeenkomst 4', date: 'Woensdag 28 oktober' },
-        { label: 'Bijeenkomst 5', date: 'Woensdag 4 november' },
-        { label: 'Bijeenkomst 6', date: 'Woensdag 11 november' },
-        { label: 'Bijeenkomst 7', date: 'Woensdag 18 november' },
-        { label: 'Bijeenkomst 8', date: 'Woensdag 25 november' },
+        { label: 'Bijeenkomst 1', date: 'Woensdag  4 november' },
+        { label: 'Bijeenkomst 2', date: 'Woensdag 11 november' },
+        { label: 'Bijeenkomst 3', date: 'Woensdag 18 november' },
+        { label: 'Bijeenkomst 4', date: 'Woensdag 25 november' },
+        { label: 'Bijeenkomst 5', date: 'Woensdag  2 december' },
+        { label: 'Bijeenkomst 6', date: 'Woensdag  9 december' },
+        { label: 'Bijeenkomst 7', date: 'Woensdag 16 december' },
+        { label: 'Bijeenkomst 8', date: 'Woensdag 23 december' },
       ],
       retreat: {
-        label: 'Gezamenlijke stiltedag',
-        date: 'Zondag 15 november',
+        label: 'Stiltedag',
+        date: 'Datum volgt nog',
         time: '10.00-16.00',
       },
     },
@@ -121,7 +120,7 @@ export const trainingen: Training[] = [
         'Een werkboek',
         'Audiobestanden om thuis mee te oefenen',
         'Begeleiding gedurende de training',
-        'Een gezamenlijke stiltedag',
+        'Een stiltedag',
       ],
       employerNote:
         'Wordt de training door een werkgever vergoed? Neem dan gerust contact op voor de mogelijkheden en een passend aanbod.',
@@ -205,7 +204,7 @@ export const trainingen: Training[] = [
         items: [
           'een persoonlijk kennismakings- en intakegesprek',
           'acht wekelijkse MBSR-bijeenkomsten',
-          'een gezamenlijke stiltedag',
+          'een stiltedag',
           'een werkboek en ondersteunend oefenmateriaal',
           'audiobestanden voor de thuisbeoefening',
           'begeleiding gedurende het gehele trainingsprogramma',
@@ -238,7 +237,7 @@ export const agendaItems: AgendaItem[] = [
     date: '7 oktober t/m 25 november 2026',
     location: 'Locatie wordt binnenkort bekendgemaakt',
     description:
-      'Acht woensdagbijeenkomsten in een vaste ochtend- of avondgroep, met een gezamenlijke stiltedag op zondag 15 november.',
+      'Acht woensdagbijeenkomsten in een vaste ochtend- of avondgroep, met een stiltedag op zondag 15 november.',
   },
   {
     title: 'Mindfulness voor organisaties',
