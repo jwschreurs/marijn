@@ -46,8 +46,7 @@ export function TrainingInquiryForm({ defaultInterest = '' }: TrainingInquiryFor
         Verstuur aanvraag
       </button>
       <p className="form-note">
-        Dit is nu een eenvoudige mail-oplossing. Later kan dit worden gekoppeld aan bijvoorbeeld
-        Resend, Formspree of Microsoft Forms.
+       Op het moment werkt dit formulier nog niet, neem voor meer informatie contact op met info@marijnmetaandacht.nl
       </p>
     </form>
   );

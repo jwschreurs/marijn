@@ -111,7 +111,7 @@ export const trainingen: Training[] = [
     investment: {
       introduction:
         'Een 8-weekse MBSR-training is een investering in jezelf. Je leert vaardigheden die je ook na de training kunt blijven toepassen in het dagelijks leven.',
-      price: '€ 425,-',
+      price: '€ 475,-',
       taxNote: 'Dit tarief is vrijgesteld van btw.',
       includes: [
         'Een vrijblijvend kennismakingsgesprek',

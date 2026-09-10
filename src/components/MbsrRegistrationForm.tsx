@@ -193,6 +193,7 @@ export function MbsrRegistrationForm() {
           <h2>Formulier gereedmaken</h2>
           <p id="registration-prototype-note" className="form-note">
             Dit is een ontwerpversie. Ingevulde gegevens worden nog niet opgeslagen of verzonden.
+            Stuur voor meer informatie een mail naar info@marijnmetaandacht.nl
           </p>
         </div>
         <button type="button" className="button primary" disabled>
