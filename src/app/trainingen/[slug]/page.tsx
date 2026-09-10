@@ -101,7 +101,7 @@ export default async function TrainingDetailPage({
             <SectionTitle
               eyebrow={training.schedule.season}
               title="Planning en groepen"
-              text={`${training.schedule.location}. Kies bij aanmelding voor de vaste ochtend- of avondgroep.`}
+              text={`${training.schedule.location}.`}
               headingLevel="h2"
             />
 
