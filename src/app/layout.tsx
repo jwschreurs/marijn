@@ -4,6 +4,9 @@ import { Header } from '@/components/Header';
 import './globals.css';
 
 export const metadata: Metadata = {
+  verification: {
+    google: 'AKS8MgVMQlkgjIvl0aD3PnSpN_2aS2ERT1tmzDfVTrk',
+  },
   title: 'Marijn met aandacht | Mindfulness voor mens en werk',
   description:
     'Mindfulness en training voor meer rust, balans en bewustzijn in leven en werk.',
