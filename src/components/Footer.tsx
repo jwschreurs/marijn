@@ -24,6 +24,11 @@ export async function Footer() {
               target="_blank"
               rel="noreferrer"
             >{copy.footer.link6}</a>
+            <a
+              href="/documenten/algemene-voorwaarden-marijn-met-aandacht.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >{copy.footer.link7}</a>
           </div>
         </div>
         <div>
