@@ -1,15 +1,16 @@
+import { getSiteContent } from '@/lib/content';
 import Image from 'next/image';
 import { TrainingCard } from '@/components/TrainingCard';
-import { trainingen } from '@/data/site';
 
-export default function TrainingenPage() {
+export default async function TrainingenPage() {
+  const { copy, trainingen } = await getSiteContent();
   return (
     <main>
       <section className="hero hero--training section section--tight">
         <div className="hero-image-background">
           <Image
             src="/boot.jpeg"
-            alt="Zonsondergang boven zee, gezien vanaf een houten boot"
+            alt={copy.trainingOverview.alt1}
             fill
             className="hero-photo training-hero-photo"
             priority
@@ -19,12 +20,9 @@ export default function TrainingenPage() {
 
         <div className="container hero-grid">
           <div className="hero-content">
-            <p className="eyebrow">Trainingen</p>
-            <h1>Trainingen met rust, aandacht en praktische handvatten</h1>
-            <p className="lead">
-              Voor particulieren, professionals en organisaties die willen werken aan aandacht,
-              balans, veerkracht en bewust omgaan met stress.
-            </p>
+            <p className="eyebrow">{copy.trainingOverview.paragraph1}</p>
+            <h1>{copy.trainingOverview.heading1}</h1>
+            <p className="lead">{copy.trainingOverview.paragraph2}</p>
           </div>
         </div>
       </section>
