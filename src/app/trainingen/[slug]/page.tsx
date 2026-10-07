@@ -1,8 +1,9 @@
+import { getSiteContent } from '@/lib/content';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { SectionTitle } from '@/components/SectionTitle';
 import { TrainingInquiryForm } from '@/components/TrainingInquiryForm';
-import { trainingen, type TrainingContentParagraph } from '@/data/site';
+import { trainingen as defaultTrainingen, type TrainingContentParagraph } from '@/data/site';
 
 function TrainingParagraph({ paragraph }: { paragraph: TrainingContentParagraph }) {
   const phrases = paragraph.emphasizedPhrases ?? [];
@@ -19,7 +20,7 @@ function TrainingParagraph({ paragraph }: { paragraph: TrainingContentParagraph 
 }
 
 export function generateStaticParams() {
-  return trainingen.map((training) => ({ slug: training.slug }));
+  return defaultTrainingen.map((training) => ({ slug: training.slug }));
 }
 
 export default async function TrainingDetailPage({
@@ -27,6 +28,7 @@ export default async function TrainingDetailPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
+  const { copy, trainingen } = await getSiteContent();
   const { slug } = await params;
   const training = trainingen.find((item) => item.slug === slug);
 
@@ -80,13 +82,9 @@ export default async function TrainingDetailPage({
             ))}
             <div className="training-actions">
               {training.slug === 'mindfulness-basistraining' ? (
-                <Link href="/inschrijven" className="button primary">
-                  Inschrijven voor deze training
-                </Link>
+                <Link href="/inschrijven" className="button primary">{copy.trainingDetail.link1}</Link>
               ) : null}
-              <Link href="/contact" className="button secondary">
-                Eerst een vraag stellen
-              </Link>
+              <Link href="/contact" className="button secondary">{copy.trainingDetail.link2}</Link>
             </div>
           </article>
           <div>
@@ -100,7 +98,7 @@ export default async function TrainingDetailPage({
           <div className="container detail-stack">
             <SectionTitle
               eyebrow={training.schedule.season}
-              title="Planning en groepen"
+              title={copy.trainingDetail.title1}
               text={`${training.schedule.location}.`}
               headingLevel="h2"
             />
@@ -110,14 +108,14 @@ export default async function TrainingDetailPage({
                 <article key={group.name} className="content-card schedule-group">
                   <h3>{group.name}</h3>
                   <p className="schedule-time">{group.time}</p>
-                  <p>Alle acht bijeenkomsten vinden plaats op woensdag.</p>
+                  <p>{copy.trainingDetail.paragraph1}</p>
                 </article>
               ))}
             </div>
 
             <div className="schedule-layout">
               <article className="content-card content-card--large">
-                <h3>De acht bijeenkomsten</h3>
+                <h3>{copy.trainingDetail.heading1}</h3>
                 <ol className="schedule-list">
                   {training.schedule.meetings.map((meeting) => (
                     <li key={meeting.label}>
@@ -128,7 +126,7 @@ export default async function TrainingDetailPage({
                 </ol>
               </article>
               <article className="content-card retreat-card">
-                <p className="eyebrow">Onderdeel van de training</p>
+                <p className="eyebrow">{copy.trainingDetail.paragraph2}</p>
                 <h3>{training.schedule.retreat.label}</h3>
                 <p>
                   <strong>{training.schedule.retreat.date}</strong>
@@ -146,7 +144,7 @@ export default async function TrainingDetailPage({
           <div className="container two-column form-layout">
             <div>
               <SectionTitle
-                eyebrow="Investering en tarieven"
+                eyebrow={copy.trainingDetail.eyebrow1}
                 title={training.investment.price}
                 text={training.investment.introduction}
                 headingLevel="h2"
@@ -154,20 +152,16 @@ export default async function TrainingDetailPage({
               <p className="muted">{training.investment.taxNote}</p>
               <p>{training.investment.employerNote}</p>
               <p>{training.investment.reimbursementNote}</p>
-              <Link href="/mindfulness#vergoeding" className="text-link">
-                Lees meer over vergoedingsmogelijkheden
-              </Link>
+              <Link href="/mindfulness#vergoeding" className="text-link">{copy.trainingDetail.link3}</Link>
             </div>
             <article className="content-card content-card--large">
-              <h3>De investering is inclusief</h3>
+              <h3>{copy.trainingDetail.heading2}</h3>
               <ul className="feature-list">
                 {training.investment.includes.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
-              <Link href="/contact" className="button primary inline-button">
-                Neem contact op
-              </Link>
+              <Link href="/contact" className="button primary inline-button">{copy.trainingDetail.link4}</Link>
             </article>
           </div>
         </section>

@@ -1,17 +1,18 @@
+import { getSiteContent } from '@/lib/content';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SectionTitle } from '@/components/SectionTitle';
 import { TrainingCard } from '@/components/TrainingCard';
-import { siteConfig, trainingen } from '@/data/site';
 
-export default function HomePage() {
+export default async function HomePage() {
+  const { copy, siteConfig, trainingen } = await getSiteContent();
   return (
     <main>
           <section className="hero section section--tight">
               <div className="hero-image-background">
                   <Image
                       src="/hero-marijn.jpeg"
-                      alt="Rustige mindfulness achtergrond met uitzicht over een tempelcomplex"
+                      alt={copy.home.alt1}
                       fill
                       className="hero-photo"
                       priority
@@ -22,18 +23,11 @@ export default function HomePage() {
               <div className="container hero-grid">
                   <div className="hero-content">
                       <p className="eyebrow">{siteConfig.tagline}</p>
-                      <h1>Meer rust, aandacht en balans in leven en werk.</h1>
-                      <p className="lead">
-                          Marijn met aandacht biedt mindfulness en trainingen voor
-                          mensen en organisaties die bewuster willen omgaan met stress, drukte en verandering.
-                      </p>
+                      <h1>{copy.home.heading1}</h1>
+                      <p className="lead">{copy.home.paragraph1}</p>
                       <div className="hero-actions">
-                          <Link href="/trainingen" className="button primary">
-                              Bekijk trainingen
-                          </Link>
-                          <Link href="/contact" className="button secondary">
-                              Neem contact op
-                          </Link>
+                          <Link href="/trainingen" className="button primary">{copy.home.link1}</Link>
+                          <Link href="/contact" className="button secondary">{copy.home.link2}</Link>
                       </div>
                   </div>
               </div>
@@ -42,20 +36,16 @@ export default function HomePage() {
       <section className="section soft-section">
         <div className="container two-column">
           <SectionTitle
-            eyebrow="Met aandacht"
-            title="Praktisch, rustig en mensgericht"
-            text="Mindfulness hoeft niet ingewikkeld te zijn. Het gaat om leren opmerken wat er gebeurt, ruimte maken en van daaruit bewust reageren. In kleine stappen, met aandacht voor jouw eigen situatie."
+            eyebrow={copy.home.eyebrow1}
+            title={copy.home.title1}
+            text={copy.home.text1}
             headingLevel="h2"
           />
           <div className="info-panel">
-            <p>
-              Het aanbod is geschikt voor particulieren en organisaties. De toon is
-              rustig en toegankelijk, met oefeningen en inzichten die je direct kunt toepassen in
-              het dagelijks leven of op het werk.
-            </p>
+            <p>{copy.home.paragraph2}</p>
             <ul>
-              <li>Mindfulness voor meer rust en bewustzijn</li>
-              <li>Trainingen voor organisaties</li>
+              <li>{copy.home.item1}</li>
+              <li>{copy.home.item2}</li>
             </ul>
           </div>
         </div>
@@ -64,8 +54,8 @@ export default function HomePage() {
       <section className="section">
         <div className="container">
           <SectionTitle
-            eyebrow="Aanbod"
-            title="Trainingen"
+            eyebrow={copy.home.eyebrow2}
+            title={copy.home.title2}
             headingLevel="h2"
           />
           <div className="card-grid">
@@ -76,11 +66,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section soft-section" aria-label="Inspirerende quote">
+      <section className="section soft-section" aria-label={copy.home.accessibleLabel1}>
         <div className="container quote-block">
-          <p className="quote">
-            “I never said it would be easy, I only said it would be worth it.” – Mae West
-          </p>
+          <p className="quote">{copy.home.paragraph3}</p>
         </div>
       </section>
     </main>

@@ -1,14 +1,16 @@
+import { getSiteContent } from '@/lib/content';
 import { SectionTitle } from '@/components/SectionTitle';
 
-export default function OverMarijnPage() {
+export default async function OverMarijnPage() {
+  const { copy } = await getSiteContent();
   return (
     <main>
       <section className="section page-hero">
         <div className="container narrow">
           <SectionTitle
-            eyebrow="Over Marijn"
-            title="Een rustige en persoonlijke benadering"
-            text="Gebruik deze pagina om iets te vertellen over achtergrond, visie, werkwijze en ervaring."
+            eyebrow={copy.legacyAbout.eyebrow1}
+            title={copy.legacyAbout.title1}
+            text={copy.legacyAbout.text1}
             align="center"
           />
         </div>
@@ -17,28 +19,16 @@ export default function OverMarijnPage() {
       <section className="section">
         <div className="container content-grid">
           <div className="content-card">
-            <h2>Visie</h2>
-            <p>
-              Mindfulness kan helpen om meer rust, helderheid en aandacht te ervaren in werk en
-              dagelijks leven. Vanuit een zachte en professionele aanpak ontstaat ruimte om bewuster
-              keuzes te maken.
-            </p>
+            <h2>{copy.legacyAbout.heading1}</h2>
+            <p>{copy.legacyAbout.paragraph1}</p>
           </div>
           <div className="content-card">
-            <h2>Werkwijze</h2>
-            <p>
-              De begeleiding is praktisch, toegankelijk en afgestemd op de vraag van de deelnemer of
-              organisatie. Geen overdaad aan theorie, maar oefeningen en inzichten die direct
-              toepasbaar zijn.
-            </p>
+            <h2>{copy.legacyAbout.heading2}</h2>
+            <p>{copy.legacyAbout.paragraph2}</p>
           </div>
           <div className="content-card">
-            <h2>Voor wie</h2>
-            <p>
-              Voor mensen die op zoek zijn naar meer balans, meer focus of meer rust. Ook geschikt
-              voor teams en organisaties die aandacht willen geven aan welzijn, werkdruk en
-              veerkracht.
-            </p>
+            <h2>{copy.legacyAbout.heading3}</h2>
+            <p>{copy.legacyAbout.paragraph3}</p>
           </div>
         </div>
       </section>

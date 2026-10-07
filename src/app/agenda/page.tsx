@@ -1,16 +1,17 @@
+import { getSiteContent } from '@/lib/content';
 import { SectionTitle } from '@/components/SectionTitle';
-import { agendaItems } from '@/data/site';
 import Link from 'next/link';
 
-export default function AgendaPage() {
+export default async function AgendaPage() {
+  const { copy, agendaItems } = await getSiteContent();
   return (
     <main>
       <section className="section page-hero">
         <div className="container narrow">
           <SectionTitle
-            eyebrow="Agenda"
-            title="Geplande trainingen en bijeenkomsten"
-            text="Bekijk wanneer trainingen starten en welke bijeenkomsten op aanvraag beschikbaar zijn. Op de trainingspagina vind je alle praktische details."
+            eyebrow={copy.agenda.eyebrow1}
+            title={copy.agenda.title1}
+            text={copy.agenda.text1}
             align="center"
           />
         </div>
@@ -18,7 +19,7 @@ export default function AgendaPage() {
 
       <section className="section">
         <div className="container agenda-list">
-          {agendaItems.map((item) => (
+          {agendaItems.map((item, index) => (
             <article key={item.title} className="agenda-card">
               <div>
                 <p className="card-meta">{item.date}</p>
@@ -27,10 +28,8 @@ export default function AgendaPage() {
               </div>
               <div>
                 <p>{item.description}</p>
-                {item.title.includes('Stress Reduction') ? (
-                  <Link href="/trainingen/mindfulness-basistraining" className="text-link">
-                    Bekijk planning en investering
-                  </Link>
+                {index === 0 ? (
+                  <Link href="/trainingen/mindfulness-basistraining" className="text-link">{copy.agenda.link1}</Link>
                 ) : null}
               </div>
             </article>

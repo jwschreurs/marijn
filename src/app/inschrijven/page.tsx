@@ -1,22 +1,23 @@
+import { getSiteContent } from '@/lib/content';
 import type { Metadata } from 'next';
 import { MbsrRegistrationForm } from '@/components/MbsrRegistrationForm';
 import { SectionTitle } from '@/components/SectionTitle';
 
-export const metadata: Metadata = {
-  title: 'Inschrijven MBSR-training | Marijn met aandacht',
-  description:
-    'Inschrijfformulier voor de MBSR-training van Marijn met aandacht.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { copy } = await getSiteContent();
+  return { title: copy.registration.metadataTitle, description: copy.registration.metadataDescription };
+}
 
-export default function RegistrationPage() {
+export default async function RegistrationPage() {
+  const { copy } = await getSiteContent();
   return (
     <main>
       <section className="section page-hero registration-hero">
         <div className="container narrow">
           <SectionTitle
-            eyebrow="MBSR-training"
-            title="Inschrijfformulier"
-            text="Vul het formulier in ter voorbereiding op je inschrijving en het persoonlijke intakegesprek."
+            eyebrow={copy.registration.eyebrow1}
+            title={copy.registration.title1}
+            text={copy.registration.text1}
             align="center"
           />
         </div>
