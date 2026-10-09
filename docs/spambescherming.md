@@ -54,4 +54,4 @@ De lokale tests onderscheppen Cloudflare en Microsoft en versturen geen echte e-
 
 ## Opmaak van de spamcontrole
 
-De controle staat in een rustig vlak met een saliegroen icoon. Turnstile gebruikt het lichte thema en toont het compacte Cloudflare-vak alleen wanneer interactie nodig is (appearance: interaction-only). De controle zelf loopt nog steeds automatisch; de servervalidatie blijft verplicht. De inhoud van het Cloudflare-iframe wordt niet met eigen CSS overschreven.
+De controle staat in een rustig vlak met een saliegroen icoon. Turnstile gebruikt het lichte thema en toont het compacte Cloudflare-vak alleen wanneer interactie nodig is (`appearance: interaction-only`). De controle zelf loopt nog steeds automatisch; de servervalidatie blijft verplicht. De inhoud van het Cloudflare-iframe wordt niet met eigen CSS overschreven.
