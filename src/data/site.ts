@@ -441,7 +441,6 @@ export const pageCopy = {
     "label3": "Telefoonnummer",
     "placeholder3": "06 12 34 56 78",
     "label4": "Adres",
-    "label5": "Startdatum training",
     "paragraph6": "Stap 2",
     "heading3": "Over je deelname",
     "paragraph7": "Deze vragen helpen om het intakegesprek goed voor te bereiden.",

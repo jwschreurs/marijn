@@ -15,7 +15,6 @@ test('Registration validates, preserves input on rejection and mails every field
   await page.getByLabel('E-mailadres', { exact: true }).fill('reject@example.invalid');
   await page.getByLabel('Telefoonnummer', { exact: true }).fill('0612345678');
   await page.getByLabel('Adres', { exact: true }).fill('Voorbeeldstraat 1');
-  await page.getByLabel('Startdatum training', { exact: true }).fill('2026-11-04');
   await page.locator('[name="reden-deelname"]').fill('Meer rust en aandacht');
   await page.locator('[name="alle-bijeenkomsten"][value="nee"]').check();
   await page.locator('[name="afwezige-bijeenkomsten"]').fill('De tweede bijeenkomst');
@@ -35,7 +34,7 @@ test('Registration validates, preserves input on rejection and mails every field
   const messages = (await readFile('test-results/form-mails.jsonl', 'utf8')).trim().split('\n').map(line => JSON.parse(line));
   const mail = messages.find(message => message.replyTo[0].emailAddress.address === 'registration@example.invalid');
   expect(mail.toRecipients[0].emailAddress.address).toBe('info@marijnmetaandacht.nl');
-  for (const text of ['Test Deelnemer', '0612345678', 'Voorbeeldstraat 1', '2026-11-04', 'Meer rust en aandacht', 'De tweede bijeenkomst', 'Via een folder', 'Hoe bereid ik mij voor?']) expect(mail.body.content).toContain(text);
+  for (const text of ['Test Deelnemer', '0612345678', 'Voorbeeldstraat 1', 'Meer rust en aandacht', 'De tweede bijeenkomst', 'Via een folder', 'Hoe bereid ik mij voor?']) expect(mail.body.content).toContain(text);
 });
 
 test('Contact form blocks honeypot and sends one message; uncertain delivery preserves input', async ({ page }) => {

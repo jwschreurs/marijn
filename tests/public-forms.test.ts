@@ -12,12 +12,12 @@ const form = (values: Record<string, string> = {}) => {
   for (const [key, value] of Object.entries({ naam: 'Test Deelnemer', email: 'test@example.invalid', ...values })) data.set(key, value);
   return data;
 };
-test('Forms validate required fields, choices, lengths, dates and header injection', () => {
-  const registration = parsePublicForm('registration', form({ 'reden-deelname': 'Rust\nen aandacht', 'dagelijks-oefenen': 'bespreken-tijdens-intake', startdatum: '2026-11-04' }), []);
+test('Forms validate required fields, choices, lengths and header injection', () => {
+  const registration = parsePublicForm('registration', form({ 'reden-deelname': 'Rust\nen aandacht', 'dagelijks-oefenen': 'bespreken-tijdens-intake' }), []);
   assert.match(registration.text, /Rust\nen aandacht/);
   assert.match(registration.text, /Bespreken tijdens intake/);
   assert.equal(registration.replyTo, 'test@example.invalid');
-  const invalidInputs: Record<string, string>[] = [{ naam: '' }, { email: 'test@example.invalid\r\nBcc: victim@example.invalid' }, { naam: 'x'.repeat(151) }, { startdatum: '2026-02-30' }, { 'dagelijks-oefenen': '__proto__' }, { telefoon: '<script>' }, { 'reden-deelname': 'x'.repeat(5001) }];
+  const invalidInputs: Record<string, string>[] = [{ naam: '' }, { email: 'test@example.invalid\r\nBcc: victim@example.invalid' }, { naam: 'x'.repeat(151) }, { 'dagelijks-oefenen': '__proto__' }, { telefoon: '<script>' }, { 'reden-deelname': 'x'.repeat(5001) }];
   for (const values of invalidInputs) assert.throws(() => parsePublicForm('registration', form(values), []));
   assert.throws(() => parsePublicForm('unknown', form(), []));
   assert.throws(() => parsePublicForm('inquiry', form({ interesse: 'Verzonnen' }), ['Training']));

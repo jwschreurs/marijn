@@ -41,8 +41,6 @@ export async function MbsrRegistrationForm() {
           </label>
           <label className="field-wide">{copy.registrationForm.label4}<input type="text" name="adres" maxLength={300} autoComplete="street-address" />
           </label>
-          <label>{copy.registrationForm.label5}<input type="date" name="startdatum" />
-          </label>
         </div>
       </section>
 
