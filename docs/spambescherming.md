@@ -51,7 +51,3 @@ De vaste mailteksten staan in formConfirmationCopy in src/data/site.ts. Ze zijn 
 Gebruik je eigen bezoekersadres, verschillend van het info-adres. Test zelf één contactaanvraag en één inschrijving. Controleer de pagina, de mail aan Marijn en de ontvangstbevestiging. Bij hetzelfde e-mailadres binnen een uur is alleen de eerste bevestiging te verwachten. Controleer eventueel de spammap. Test ook op een telefoon.
 
 De lokale tests onderscheppen Cloudflare en Microsoft en versturen geen echte e-mails. Ze controleren geldige en ongeldige tokens, verlopen controles, invoerbehoud, bevestigingsfouten en limieten. De echte widget en daadwerkelijke bezorging moeten na het invullen van de sleutels nog worden gecontroleerd.
-
-## Opmaak van de spamcontrole
-
-De controle staat in een rustig vlak met een saliegroen icoon. Turnstile gebruikt het lichte thema en toont het compacte Cloudflare-vak alleen wanneer interactie nodig is (appearance: interaction-only). De controle zelf loopt nog steeds automatisch; de servervalidatie blijft verplicht. De inhoud van het Cloudflare-iframe wordt niet met eigen CSS overschreven.

@@ -1159,14 +1159,6 @@ code {
 .form-feedback-error { background: #fae9e3; color: #793321; }
 .public-form-fields :focus-visible, .form-feedback:focus-visible { outline: 3px solid #686f60; outline-offset: 3px; }
 
-.form-bot-check { display: grid; gap: .65rem; min-width: 0; width: 100%; padding: 1rem 1.1rem; background: var(--surface-soft); border: 1px solid var(--border); border-radius: 16px; }
-.form-bot-check-heading { display: flex; align-items: center; gap: .7rem; }
-.form-bot-check-icon { display: grid; place-items: center; flex: 0 0 32px; width: 32px; height: 32px; border-radius: 50%; color: #526449; background: var(--sage); }
-.form-bot-check-icon svg { display: block; width: 19px; height: 19px; }
-.form-bot-check-status { margin: 0; color: var(--text-strong); font-size: .9rem; font-weight: 600; line-height: 1.5; }
-.form-bot-check-widget { justify-self: center; max-width: 100%; }
-.form-bot-check-privacy { margin: 0; color: var(--text); font-size: .78rem; line-height: 1.6; }
-.form-bot-check-privacy a { text-underline-offset: 3px; }
-.form-bot-check-error { margin: 0; font-size: .9rem; line-height: 1.6; color: #793321; }
-.form-bot-check-retry { padding: .35rem 0; border: 0; background: transparent; color: inherit; font: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
-@media (max-width: 400px) { .form-bot-check { padding: .85rem; } }
+.form-bot-check { min-width: 0; width: 100%; }
+.form-bot-check .form-note { margin: .5rem 0; }
+.form-bot-check button { font: inherit; cursor: pointer; }
