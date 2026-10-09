@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { PGlite } from '@electric-sql/pglite';
 import { parsePublicForm } from '../src/lib/public-form-schema';
 import { MailDeliveryError, readMailConfig, sendMicrosoftMail } from '../src/lib/microsoft-mail';
-import { claimDelivery, finishDelivery, takeFormAttempt } from '../src/lib/public-form-storage';
+import { claimDelivery, finishDelivery, takeFormAttempt, reserveConfirmation } from '../src/lib/public-form-storage';
 import type { Sql } from '../src/lib/content-storage';
 
 const form = (values: Record<string, string> = {}) => {
@@ -78,6 +78,10 @@ test('Database deduplicates concurrent sends, permits rejected retries, blocks u
     assert.equal(await claimDelivery(sql, id, 'hash'), 'uncertain');
     await finishDelivery(sql, id, 'sent');
     assert.equal(await claimDelivery(sql, id, 'hash'), 'sent');
+    const confirmations = await Promise.all(Array.from({ length: 8 }, () => reserveConfirmation(sql, 'recipient-hash')));
+    assert.equal(confirmations.filter(Boolean).length, 1);
+    await sql`UPDATE public_form_limits SET window_start = now() - interval '61 minutes' WHERE bucket = 'confirmation:recipient-hash'`;
+    assert.equal(await reserveConfirmation(sql, 'recipient-hash'), true);
     const attempts = await Promise.all(Array.from({ length: 8 }, () => takeFormAttempt(sql, 'ip:test')));
     assert.equal(attempts.filter(Boolean).length, 5);
     await sql`UPDATE public_form_limits SET window_start = now() - interval '61 minutes'`;

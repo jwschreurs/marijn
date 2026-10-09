@@ -482,3 +482,16 @@ export const pageCopy = {
     "description": "Mindfulness en training voor meer rust, balans en bewustzijn in leven en werk."
   }
 };
+
+// Vaste ontvangstbevestiging; bevat geen door bezoekers ingevulde tekst.
+export const formConfirmationCopy = {
+  inquiry: {
+    subject: "Je bericht aan Marijn met aandacht is ontvangen",
+    body: "Bedankt voor je bericht. Je aanvraag is ontvangen en Marijn neemt contact met je op. Je hoeft het formulier niet opnieuw in te vullen.",
+  },
+  registration: {
+    subject: "Je aanmelding bij Marijn met aandacht is ontvangen",
+    body: "Bedankt voor je aanmelding voor de MBSR-training. Marijn neemt contact met je op voor het persoonlijke intakegesprek. Je deelname is nog niet definitief; die bevestigen we na overleg.",
+  },
+  unrequested: "Heb je zelf geen formulier ingevuld? Dan kun je deze e-mail negeren. Je bent niet aangemeld voor een nieuwsbrief.",
+};

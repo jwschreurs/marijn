@@ -2,12 +2,14 @@ import { getSiteContent } from '@/lib/content';
 import { siteConfig as deliveryConfig } from '@/data/site';
 import { readMailConfig } from '@/lib/microsoft-mail';
 import { hasDatabase } from '@/lib/database';
+import { readTurnstileConfig } from '@/lib/turnstile';
 import { PublicForm } from '@/components/PublicForm';
 export async function MbsrRegistrationForm() {
   const { copy } = await getSiteContent();
+  const spamConfig = readTurnstileConfig(process.env);
   return (
     <PublicForm kind="registration" className="registration-form" buttonLabel={copy.registrationForm.submitLabel}
-      email={deliveryConfig.email} configured={Boolean(readMailConfig(process.env)) && hasDatabase()}
+      email={deliveryConfig.email} siteKey={spamConfig?.siteKey ?? ''} configured={Boolean(readMailConfig(process.env)) && hasDatabase() && Boolean(spamConfig)}
       describedBy="registration-guidance registration-delivery-note">
       <section className="form-section" aria-labelledby="registration-guidance-heading">
         <div className="form-section-header">
