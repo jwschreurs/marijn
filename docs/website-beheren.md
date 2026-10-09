@@ -30,7 +30,7 @@ Als een ander venster ondertussen publiceert, weigert het beheer een oudere vers
 
 Teksten, koppen, knopteksten, menu-labels, afbeeldingsbeschrijvingen, contactgegevens, agenda-items, de bestaande trainingen, prijzen, planning, formulierteksten en zoekresultaatteksten. De opbouw, routes, afbeeldingen en het aantal trainingen en agenda-items blijven code. Voor zulke uitbreidingen is een deployment nodig.
 
-De formulieren blijven werken zoals vóór deze toevoeging: de contactaanvraag gebruikt mailto en het inschrijfformulier is een ontwerp zonder verzending. Tekstbeheer voegt geen opslag van formulierinzendingen toe.
+Het contact- en inschrijfformulier kunnen via Microsoft 365 naar info@marijnmetaandacht.nl mailen. Hiervoor is een aparte eenmalige koppeling nodig; zie [Formulieren en e-mail](formulieren-mail.md). Inzendingen verschijnen in de mailbox; het beheer bevat geen inbox.
 
 Waar de uitleg bij formulieren {email} bevat, vult de website automatisch het centrale contactadres in.
 

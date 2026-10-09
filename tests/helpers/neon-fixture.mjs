@@ -1,7 +1,7 @@
 // Test-only Neon HTTP adapter backed by real PostgreSQL execution in PGlite.
 // Never imported by the application or deployed as a route.
 import { PGlite } from '@electric-sql/pglite';
-import { readFile } from 'node:fs/promises';
+import { readFile, mkdir, writeFile, appendFile } from 'node:fs/promises';
 import { scryptSync } from 'node:crypto';
 if (process.env.CMS_TEST_MODE !== '1') throw new Error('This fixture only runs with CMS_TEST_MODE=1.');
 const db = new PGlite();
@@ -10,8 +10,23 @@ process.env.DATABASE_URL = 'postgresql://fixture:fixture@cms-fixture.neon.tech/t
 const salt = '0'.repeat(32);
 const hash = scryptSync('uitsluitend-lokaal-testwachtwoord', salt, 64, { N: 32768, r: 8, p: 1, maxmem: 64 * 1024 * 1024 }).toString('hex');
 process.env.ADMIN_PASSWORD_HASH = 'scrypt:' + salt + ':' + hash;
+await db.exec(await readFile(new URL('../../database/formulieren.sql', import.meta.url), 'utf8'));
+process.env.MS365_TENANT_ID = '00000000-0000-4000-8000-000000000001';
+process.env.MS365_CLIENT_ID = '00000000-0000-4000-8000-000000000002';
+process.env.MS365_CLIENT_SECRET = 'fixture-only-not-a-real-secret';
+process.env.MS365_SENDER = 'info@example.invalid';
+await mkdir('test-results', { recursive: true });
+await writeFile('test-results/form-mails.jsonl', '');
 const originalFetch = globalThis.fetch;
 globalThis.fetch = async (url, options) => {
+  if (String(url).startsWith('https://login.microsoftonline.com/')) return Response.json({ access_token: 'fixture-only-token' });
+  if (String(url).startsWith('https://graph.microsoft.com/')) {
+    const { message } = JSON.parse(options.body);
+    if (message.replyTo[0].emailAddress.address === 'reject@example.invalid') return new Response(null, { status: 403 });
+    if (message.replyTo[0].emailAddress.address === 'uncertain@example.invalid') throw new Error('Fixture connection lost');
+    await appendFile('test-results/form-mails.jsonl', JSON.stringify(message) + '\n');
+    return new Response(null, { status: 202 });
+  }
   if (!String(url).includes('neon.tech')) return originalFetch(url, options);
   try {
     const { query, params } = JSON.parse(options.body);
