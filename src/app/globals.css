@@ -1158,3 +1158,7 @@ code {
 .form-feedback-success { background: var(--sage); color: #30442e; }
 .form-feedback-error { background: #fae9e3; color: #793321; }
 .public-form-fields :focus-visible, .form-feedback:focus-visible { outline: 3px solid #686f60; outline-offset: 3px; }
+
+.form-bot-check { min-width: 0; width: 100%; }
+.form-bot-check .form-note { margin: .5rem 0; }
+.form-bot-check button { font: inherit; cursor: pointer; }

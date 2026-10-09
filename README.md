@@ -53,3 +53,5 @@ Extra scripts: npm run beheer:wachtwoord voor het instellen van het beheerderswa
 ## Formulieren versturen
 
 Contactaanvragen en MBSR-aanmeldingen worden via Microsoft 365 gemaild. Zie [de installatiehandleiding](docs/formulieren-mail.md) voor de Microsoft-koppeling, database-aanvulling, Vercel-instellingen en oplevercontrole.
+
+Voor automatische ontvangstbevestigingen en de verplichte botcontrole: [spambescherming instellen](docs/spambescherming.md). Zet de Turnstile-sleutels vóór deployment in Vercel.

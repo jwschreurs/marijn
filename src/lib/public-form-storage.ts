@@ -23,3 +23,14 @@ export async function claimDelivery(sql: Sql, id: string, fingerprint: string) {
 export async function finishDelivery(sql: Sql, id: string, status: 'sent' | 'failed' | 'uncertain') {
   await sql`UPDATE public_form_deliveries SET status = ${status} WHERE id = ${id}`;
 }
+
+// At most one confirmation per address per hour, across all instances and forms.
+export async function reserveConfirmation(sql: Sql, recipientHash: string) {
+  const bucket = "confirmation:" + recipientHash;
+  const rows = await sql`INSERT INTO public_form_limits (bucket, attempts, window_start)
+    VALUES (${bucket}, 1, now())
+    ON CONFLICT (bucket) DO UPDATE SET attempts = 1, window_start = now()
+    WHERE public_form_limits.window_start < now() - interval '1 hour'
+    RETURNING bucket`;
+  return rows.length === 1;
+}

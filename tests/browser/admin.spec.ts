@@ -1,7 +1,10 @@
 import { expect, test } from '@playwright/test';
+import { mockTurnstile } from '../helpers/turnstile-browser';
 import { readFile } from 'node:fs/promises';
 
 test('Login, publication without rebuild, conflicts, escaping, logout and responsive routes', async ({ page, request }) => {
+  await page.context().route('https://challenges.cloudflare.com/**', route => route.abort());
+  await mockTurnstile(page);
   const manifest = JSON.parse(await readFile('.next/server/server-reference-manifest.json', 'utf8')) as {
     node: Record<string, { exportedName: string }>;
   };

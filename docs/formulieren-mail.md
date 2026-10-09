@@ -2,7 +2,7 @@
 
 Het inschrijfformulier op /inschrijven en de contactformulieren op /contact en de trainingspagina's mailen hun inhoud naar **info@marijnmetaandacht.nl**. De bezoeker krijgt een bevestiging op de pagina. Een antwoord op de ontvangen e-mail is gericht aan de bezoeker.
 
-Er wordt geen bezoekersmailbox benaderd. De website verstuurt via een eigen Microsoft-app; het gewone mailboxwachtwoord is niet nodig. Er gaat geen automatische bevestigingsmail naar de bezoeker.
+Er wordt geen bezoekersmailbox benaderd. De website verstuurt via een eigen Microsoft-app; het gewone mailboxwachtwoord is niet nodig. Na een geslaagde aanvraag wordt een korte bevestiging aan de bezoeker geprobeerd. Zie [Spambescherming en bevestiging](spambescherming.md) voor de verplichte Turnstile-configuratie en verzendlimiet.
 
 ## Eenmalig: Microsoft 365
 
@@ -52,7 +52,7 @@ MS365_SENDER wordt de **UserPrincipalName** van de gekozen mailbox, zoals hierbo
 DATABASE_URL blijft nodig. Zet de vier mailwaarden ook in .env.local als je lokaal echt wilt testen. Gebruik nooit NEXT_PUBLIC_ en commit .env.local niet.
 
 3. Commit en push de formuliercode; merge indien nodig naar de productiebranch. Deploy daarna met deze instellingen. Een redeploy van oudere code voegt de formulieren niet toe.
-4. Open /inschrijven. De verzendknop hoort beschikbaar te zijn zodra de mailinstellingen aanwezig zijn.
+4. Open /inschrijven. De verzendknop hoort beschikbaar te zijn zodra de mail- en Turnstile-instellingen aanwezig zijn en de botcontrole is voltooid.
 
 De server vraagt met deze appgegevens een tijdelijk token aan bij Microsoft. [Microsoft: client credentials](https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-client-creds-grant-flow)
 

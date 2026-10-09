@@ -17,11 +17,23 @@ process.env.MS365_CLIENT_SECRET = 'fixture-only-not-a-real-secret';
 process.env.MS365_SENDER = 'info@example.invalid';
 await mkdir('test-results', { recursive: true });
 await writeFile('test-results/form-mails.jsonl', '');
+process.env.TURNSTILE_SITE_KEY = 'fixture-site-key';
+process.env.TURNSTILE_SECRET_KEY = 'fixture-secret-key';
+process.env.TURNSTILE_HOSTNAMES = 'localhost';
+process.env.VERCEL = '1';
+const usedTokens = new Set();
 const originalFetch = globalThis.fetch;
 globalThis.fetch = async (url, options) => {
+  if (String(url).startsWith('https://challenges.cloudflare.com/turnstile/v0/siteverify')) {
+    const token = new URLSearchParams(options.body).get('response');
+    if (!token?.startsWith('fixture:') || usedTokens.has(token)) return Response.json({ success: false });
+    usedTokens.add(token);
+    return Response.json({ success: true, hostname: 'localhost', action: token.split(':')[1] });
+  }
   if (String(url).startsWith('https://login.microsoftonline.com/')) return Response.json({ access_token: 'fixture-only-token' });
   if (String(url).startsWith('https://graph.microsoft.com/')) {
     const { message } = JSON.parse(options.body);
+    if (message.toRecipients[0].emailAddress.address === 'confirmation-fails@example.invalid') return new Response(null, { status: 403 });
     if (message.replyTo[0].emailAddress.address === 'reject@example.invalid') return new Response(null, { status: 403 });
     if (message.replyTo[0].emailAddress.address === 'uncertain@example.invalid') throw new Error('Fixture connection lost');
     await appendFile('test-results/form-mails.jsonl', JSON.stringify(message) + '\n');
