@@ -423,8 +423,8 @@ export const pageCopy = {
     "option2": "Kennismakingsgesprek",
     "label4": "Bericht",
     "placeholder3": "Waar wil je meer over weten?",
-    "button1": "Verstuur aanvraag",
-    "paragraph1": "Op het moment werkt dit formulier nog niet, neem voor meer informatie contact op met {email}"
+    "submitLabel": "Verstuur aanvraag",
+    "deliveryNote": "Je aanvraag wordt per e-mail naar {email} gestuurd. Marijn gebruikt je gegevens om je vraag te beantwoorden."
   },
   "registrationForm": {
     "paragraph1": "Vooraf",
@@ -466,16 +466,17 @@ export const pageCopy = {
     "label19": "Ja",
     "label20": "Nee",
     "label21": "Ik wil dit graag tijdens het intakegesprek bespreken",
-    "label22": "Vraag 8",
+    "label22": "Vraag 5",
     "question5": "Heb je nog vragen of opmerkingen die je voorafgaand aan de training wilt bespreken?",
     "paragraph9": "Privacy",
     "heading4": "Privacy en verwerking van je gegevens",
     "paragraph10": "Dit formulier bevat persoonsgegevens. Deze gegevens worden uitsluitend gebruikt voor het voorbereiden, organiseren en uitvoeren van de MBSR-training en voor de bijbehorende administratie.",
     "paragraph11": "Neem in dit formulier geen medische diagnoses, psychologische klachten, informatie over behandelingen of andere gevoelige gezondheidsinformatie op. Als zulke informatie relevant is voor je deelname, bespreken we die tijdens het intakegesprek.",
     "paragraph12": "Je persoonsgegevens worden zorgvuldig behandeld en niet langer bewaard dan noodzakelijk. Gegevens die onderdeel zijn van de wettelijke financiële administratie kunnen vanwege wettelijke bewaarplichten langer worden bewaard.",
-    "heading5": "Formulier gereedmaken",
-    "paragraph13": "Dit is een ontwerpversie. Ingevulde gegevens worden nog niet opgeslagen of verzonden. Stuur voor meer informatie een mail naar {email}",
-    "button1": "Verzenden wordt later toegevoegd"
+    "submitHeading": "Aanmelding versturen",
+    "requiredNote": "Naam en e-mailadres zijn verplicht. De overige velden zijn optioneel.",
+    "deliveryNote": "Je ingevulde formulier wordt per e-mail naar {email} gestuurd voor de voorbereiding van het intakegesprek. Je deelname is pas definitief na overleg.",
+    "submitLabel": "Verstuur aanmelding"
   },
   "metadata": {
     "title": "Marijn met aandacht | Mindfulness voor mens en werk",

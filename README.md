@@ -49,3 +49,7 @@ De applicatie is geschikt voor deployment op Vercel. Koppel de GitHub-repository
 Via /beheer kun je na eenmalige inrichting inloggen en websiteteksten publiceren zonder nieuwe build. Het beheer gebruikt Neon via Vercel Storage. Zie [de inrichtings- en gebruikshandleiding](docs/website-beheren.md).
 
 Extra scripts: npm run beheer:wachtwoord voor het instellen van het beheerderswachtwoord en npm run test voor de inhouds-, wachtwoord- en database-integratietests.
+
+## Formulieren versturen
+
+Contactaanvragen en MBSR-aanmeldingen worden via Microsoft 365 gemaild. Zie [de installatiehandleiding](docs/formulieren-mail.md) voor de Microsoft-koppeling, database-aanvulling, Vercel-instellingen en oplevercontrole.

@@ -1,11 +1,14 @@
 import { getSiteContent } from '@/lib/content';
+import { siteConfig as deliveryConfig } from '@/data/site';
+import { readMailConfig } from '@/lib/microsoft-mail';
+import { hasDatabase } from '@/lib/database';
+import { PublicForm } from '@/components/PublicForm';
 export async function MbsrRegistrationForm() {
-  const { copy, siteConfig } = await getSiteContent();
+  const { copy } = await getSiteContent();
   return (
-    <form
-      className="registration-form"
-      aria-describedby="registration-guidance registration-prototype-note"
-    >
+    <PublicForm kind="registration" className="registration-form" buttonLabel={copy.registrationForm.submitLabel}
+      email={deliveryConfig.email} configured={Boolean(readMailConfig(process.env)) && hasDatabase()}
+      describedBy="registration-guidance registration-delivery-note">
       <section className="form-section" aria-labelledby="registration-guidance-heading">
         <div className="form-section-header">
           <p className="eyebrow">{copy.registrationForm.paragraph1}</p>
@@ -21,22 +24,22 @@ export async function MbsrRegistrationForm() {
         <div className="form-section-header">
           <p className="eyebrow">{copy.registrationForm.paragraph4}</p>
           <h2 id="personal-details-heading">{copy.registrationForm.heading2}</h2>
-          <p>{copy.registrationForm.paragraph5}</p>
+          <p>{copy.registrationForm.paragraph5} {copy.registrationForm.requiredNote}</p>
         </div>
 
         <div className="registration-fields">
-          <label className="field-wide">{copy.registrationForm.label1}<input type="text" name="naam" autoComplete="name" placeholder={copy.registrationForm.placeholder1} />
+          <label className="field-wide">{copy.registrationForm.label1}<input type="text" name="naam" maxLength={150} required autoComplete="name" placeholder={copy.registrationForm.placeholder1} />
           </label>
           <label>{copy.registrationForm.label2}<input
               type="email"
-              name="email"
+              name="email" maxLength={254} required
               autoComplete="email"
               placeholder={copy.registrationForm.placeholder2}
             />
           </label>
-          <label>{copy.registrationForm.label3}<input type="tel" name="telefoon" autoComplete="tel" placeholder={copy.registrationForm.placeholder3} />
+          <label>{copy.registrationForm.label3}<input type="tel" name="telefoon" maxLength={30} autoComplete="tel" placeholder={copy.registrationForm.placeholder3} />
           </label>
-          <label className="field-wide">{copy.registrationForm.label4}<input type="text" name="adres" autoComplete="street-address" />
+          <label className="field-wide">{copy.registrationForm.label4}<input type="text" name="adres" maxLength={300} autoComplete="street-address" />
           </label>
           <label>{copy.registrationForm.label5}<input type="date" name="startdatum" />
           </label>
@@ -52,10 +55,10 @@ export async function MbsrRegistrationForm() {
 
         <div className="question-list">
           <fieldset className="form-question">
-            <legend>
+            <legend id="participation-reason-label">
               <span>{copy.registrationForm.label6}</span>{copy.registrationForm.question1}</legend>
             <p className="form-question-help">{copy.registrationForm.paragraph8}</p>
-            <textarea name="reden-deelname" rows={6} />
+            <textarea aria-labelledby="participation-reason-label" name="reden-deelname" maxLength={5000} rows={6} />
           </fieldset>
 
           <fieldset className="form-question">
@@ -67,7 +70,7 @@ export async function MbsrRegistrationForm() {
               <label className="choice-option">
                 <input type="radio" name="alle-bijeenkomsten" value="nee" />{copy.registrationForm.label9}</label>
             </div>
-            <label className="follow-up-field">{copy.registrationForm.label10}<textarea name="afwezige-bijeenkomsten" rows={3} />
+            <label className="follow-up-field">{copy.registrationForm.label10}<textarea name="afwezige-bijeenkomsten" maxLength={2000} rows={3} />
             </label>
           </fieldset>
 
@@ -86,7 +89,7 @@ export async function MbsrRegistrationForm() {
               <label className="choice-option">
                 <input type="radio" name="training-gevonden" value="anders" />{copy.registrationForm.label16}</label>
             </div>
-            <label className="follow-up-field">{copy.registrationForm.label17}<input type="text" name="training-gevonden-anders" />
+            <label className="follow-up-field">{copy.registrationForm.label17}<input type="text" name="training-gevonden-anders" maxLength={500} />
             </label>
           </fieldset>
 
@@ -104,9 +107,9 @@ export async function MbsrRegistrationForm() {
           </fieldset>
 
           <fieldset className="form-question">
-            <legend>
+            <legend id="participation-questions-label">
               <span>{copy.registrationForm.label22}</span>{copy.registrationForm.question5}</legend>
-            <textarea name="vragen-of-opmerkingen" rows={6} />
+            <textarea aria-labelledby="participation-questions-label" name="vragen-of-opmerkingen" maxLength={5000} rows={6} />
           </fieldset>
         </div>
       </section>
@@ -125,11 +128,10 @@ export async function MbsrRegistrationForm() {
 
       <div className="form-submit-panel">
         <div>
-          <h2>{copy.registrationForm.heading5}</h2>
-          <p id="registration-prototype-note" className="form-note">{copy.registrationForm.paragraph13.replace('{email}', siteConfig.email)}</p>
+          <h2>{copy.registrationForm.submitHeading}</h2>
+          <p id="registration-delivery-note" className="form-note">{copy.registrationForm.deliveryNote.replace('{email}', deliveryConfig.email)}</p>
         </div>
-        <button type="button" className="button primary" disabled>{copy.registrationForm.button1}</button>
       </div>
-    </form>
+    </PublicForm>
   );
 }
