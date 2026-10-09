@@ -24,8 +24,6 @@ export function parsePublicForm(kind: unknown, data: FormData, interests: string
   } else {
     const phone = read('telefoon', 'Telefoonnummer', 30);
     if (phone && !/^\+?[\d ().-]{6,30}$/.test(phone)) throw new FormValidationError('Vul een geldig telefoonnummer in.');
-    const date = read('startdatum', 'Startdatum training', 10);
-    if (date && (!/^\d{4}-\d{2}-\d{2}$/.test(date) || Number.isNaN(Date.parse(date)) || new Date(date).toISOString().slice(0, 10) !== date)) throw new FormValidationError('Vul een geldige startdatum in.');
     const choice = (key: string, label: string, choices: Record<string, string>) => {
       const value = read(key, label, 80);
       if (value && !Object.hasOwn(choices, value)) throw new FormValidationError(label + ': kies een geldige optie.');
@@ -34,7 +32,6 @@ export function parsePublicForm(kind: unknown, data: FormData, interests: string
     rows.push(
       ['Telefoonnummer', phone],
       ['Adres', read('adres', 'Adres', 300)],
-      ['Startdatum training', date],
       ['Reden deelname', read('reden-deelname', 'Reden deelname', 5000, false, true)],
       ['Aanwezig bij alle bijeenkomsten', choice('alle-bijeenkomsten', 'Aanwezigheid', { ja: 'Ja', nee: 'Nee' })],
       ['Verwachte afwezigheid', read('afwezige-bijeenkomsten', 'Verwachte afwezigheid', 2000, false, true)],
