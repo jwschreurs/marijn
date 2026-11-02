@@ -895,7 +895,7 @@ code {
 .nav-link {
   background: transparent;
   border: 1.5px solid transparent;
-  border-radius: 0;
+  border-radius: var(--navigation-radius);
   padding: 0.65rem 0.8rem;
   box-shadow: none;
   color: var(--text-strong);
@@ -904,7 +904,19 @@ code {
   font-weight: 600;
 }
 
-.header-navigation { min-width: 0; --navigation-highlight: #f5e8df; }
+.header-navigation {
+  min-width: 0;
+  --navigation-highlight: #f5e8df;
+  --navigation-surface: #fffaf6;
+  --navigation-border: #d99372;
+  --navigation-radius: 999px;
+  --navigation-panel-radius: 16px;
+}
+.main-nav > .nav-link,
+.nav-split {
+  background: var(--navigation-surface);
+  border: 1.5px solid var(--navigation-border);
+}
 .main-nav > .nav-link:hover,
 .main-nav > .nav-link:focus-visible,
 .nav-split:hover,
@@ -917,8 +929,8 @@ code {
   background: var(--navigation-highlight);
 }
 .nav-dropdown { position: relative; }
-.nav-split { display: flex; align-items: center; }
-.nav-split .nav-link { padding-right: .3rem; }
+.nav-split { display: flex; align-items: center; border-radius: var(--navigation-radius); }
+.nav-split .nav-link { padding-right: .3rem; border: 0; }
 .nav-disclosure {
   display: inline-flex;
   align-items: center;
@@ -928,7 +940,7 @@ code {
   min-height: 44px;
   padding: 0;
   border: 0;
-  border-radius: 0;
+  border-radius: var(--navigation-radius);
   background: transparent;
   color: var(--text-strong);
   cursor: pointer;
@@ -942,12 +954,12 @@ code {
   min-width: 220px;
   padding: .5rem;
   border: 1px solid var(--border);
-  border-radius: 0;
+  border-radius: var(--navigation-panel-radius);
   background: #fffaf6;
   box-shadow: var(--shadow);
   z-index: 30;
 }
-.nav-submenu a { display: block; padding: .8rem; }
+.nav-submenu a { display: block; padding: .8rem; border-radius: var(--navigation-radius); }
 .nav-submenu--trainings { width: 220px; max-width: calc(100vw - 2rem); }
 .header-navigation :focus-visible { outline: 2px solid #956345; outline-offset: 2px; }
 
@@ -955,9 +967,9 @@ code {
   display: none;
   width: 46px;
   height: 46px;
-  border: 1.5px solid transparent;
-  border-radius: 0;
-  background: transparent;
+  border: 1.5px solid var(--navigation-border);
+  border-radius: var(--navigation-radius);
+  background: var(--navigation-surface);
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -1024,6 +1036,7 @@ code {
     transform: translateX(-50%);
     padding: 1.1rem 1rem 1.25rem;
     background: #fbf7f8;
+    border-radius: 0 0 var(--navigation-panel-radius) var(--navigation-panel-radius);
     border-top: 1px solid rgba(235, 225, 227, 0.9);
     border-bottom: 1px solid rgba(235, 225, 227, 0.9);
     box-shadow: 0 18px 35px rgba(103, 101, 103, 0.10);
@@ -1040,13 +1053,15 @@ code {
 
   .nav-dropdown { width: min(100%, 420px); margin: 0 auto; }
   .nav-split .nav-link { flex: 1; }
-  .nav-submenu { position: static; min-width: 0; margin-top: .35rem; box-shadow: none; text-align: center; }
-  .nav-submenu--trainings { width: 100%; }
+  .nav-submenu { position: static; min-width: 0; margin-top: .35rem; padding: .35rem; box-shadow: none; text-align: left; }
+  .nav-submenu--trainings { width: calc(100% - .8rem); margin-left: .8rem; }
 
   .main-nav .nav-link {
     width: min(100%, 420px);
     margin: 0 auto;
     min-height: 46px;
+    justify-content: flex-start;
+    text-align: left;
   }
 }
 
@@ -1058,10 +1073,6 @@ code {
 
   .brand-logo {
     width: min(68vw, 260px);
-  }
-
-  .main-nav .nav-link {
-    width: 100%;
   }
 
   .hero-card--image,
