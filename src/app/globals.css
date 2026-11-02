@@ -924,25 +924,42 @@ code {
 .header-navigation { min-width: 0; }
 .nav-link--contact { border-color: #d99372; padding-inline: 1.25rem; }
 .nav-dropdown { position: relative; }
-.nav-disclosure { cursor: pointer; gap: .4rem; }
-.nav-chevron { transition: transform .2s; }
-.nav-disclosure[aria-expanded="true"] .nav-chevron { transform: rotate(180deg); }
+.nav-split { display: flex; align-items: center; border-radius: 12px; }
+.nav-split:hover, .nav-split[data-open="true"] { background: #f5e8df; }
+.nav-split .nav-link { padding-right: .3rem; border-radius: 12px 0 0 12px; }
+.nav-disclosure {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 44px;
+  width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-strong);
+  cursor: pointer;
+}
+.nav-disclosure:hover { background: #eed7c7; }
+.nav-chevron { width: 8px; height: 8px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); }
+.nav-disclosure[aria-expanded="true"] .nav-chevron { transform: translateY(2px) rotate(225deg); }
 .nav-submenu {
   position: absolute;
   top: calc(100% + .5rem);
   left: 0;
-  min-width: 240px;
+  min-width: 220px;
   padding: .5rem;
   border: 1px solid var(--border);
   border-radius: 16px;
-  background: var(--surface);
+  background: #fffaf6;
   box-shadow: var(--shadow);
   z-index: 30;
 }
 .nav-submenu a { display: block; padding: .8rem; border-radius: 10px; }
-.nav-submenu a:hover { background: var(--surface-soft); }
-.nav-submenu--trainings { width: 320px; max-width: calc(100vw - 2rem); }
-.header-navigation :focus-visible { outline: 3px solid #686f60; outline-offset: 3px; }
+.nav-submenu a:hover { background: #f5e8df; }
+.nav-submenu--trainings { width: 220px; max-width: calc(100vw - 2rem); }
+.header-navigation :focus-visible { outline: 2px solid #956345; outline-offset: 2px; }
 
 .hamburger-button {
   display: none;
@@ -1016,7 +1033,7 @@ code {
     width: 100vw;
     transform: translateX(-50%);
     padding: 1.1rem 1rem 1.25rem;
-    background: rgba(251, 247, 248, 0.98);
+    background: #fbf7f8;
     border-top: 1px solid rgba(235, 225, 227, 0.9);
     border-bottom: 1px solid rgba(235, 225, 227, 0.9);
     box-shadow: 0 18px 35px rgba(103, 101, 103, 0.10);
@@ -1032,7 +1049,7 @@ code {
   }
 
   .nav-dropdown { width: min(100%, 420px); margin: 0 auto; }
-  .nav-dropdown .nav-disclosure { width: 100%; }
+  .nav-split .nav-link { flex: 1; }
   .nav-submenu { position: static; min-width: 0; margin-top: .35rem; box-shadow: none; text-align: center; }
   .nav-submenu--trainings { width: 100%; }
 

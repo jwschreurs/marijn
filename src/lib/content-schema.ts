@@ -21,6 +21,7 @@ const groups: Record<string, string> = {
   registrationForm: 'Inschrijfformulier', metadata: 'Zoekresultaten',
 };
 const labels: Record<string, string> = {
+  menuTitle: 'Korte titel in het menu',
   name: 'Naam', tagline: 'Ondertitel', email: 'E-mailadres', phone: 'Telefoon',
   kvk: 'KvK-nummer', btwId: 'BTW-id', agbCode: 'AGB-code', location: 'Locatie / werkgebied',
   intro: 'Introductie', title: 'Titel', duration: 'Duur', audience: 'Doelgroep',

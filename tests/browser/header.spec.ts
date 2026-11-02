@@ -20,7 +20,7 @@ test('Header stays on one row and supports keyboard, touch and closing menus', a
     await page.keyboard.press('Enter');
     await expect(mindfulness).toHaveAttribute('aria-expanded', 'true');
     await page.keyboard.press('Tab');
-    await expect(nav.getByRole('link', { name: 'Wat is mindfulness?' })).toBeFocused();
+    await expect(nav.getByRole('link', { name: 'Veelgestelde vragen' })).toBeFocused();
     await page.keyboard.press('Escape');
     await expect(mindfulness).toBeFocused();
     await expect(nav.getByRole('link', { name: 'Veelgestelde vragen' })).toBeHidden();
@@ -50,22 +50,40 @@ test('Training menu links to overview and each training on desktop and mobile', 
   await page.goto('/');
   for (const width of [1440, 390]) {
     await page.setViewportSize({ width, height: 900 });
-    for (const path of ['/trainingen', '/trainingen/mindfulness-basistraining', '/trainingen/mindfulness-op-het-werk']) {
+    for (const path of ['/trainingen/mindfulness-basistraining', '/trainingen/mindfulness-op-het-werk']) {
       if (width <= 1120) await page.getByRole('button', { name: 'Menu openen of sluiten' }).click();
-      await page.getByRole('button', { name: 'Mindfulness', exact: true }).click();
-      const button = page.getByRole('button', { name: 'Trainingen', exact: true });
+      await page.getByRole('button', { name: 'Submenu Mindfulness openen of sluiten', exact: true }).click();
+      const button = page.getByRole('button', { name: 'Submenu Trainingen openen of sluiten', exact: true });
       await button.click();
       await expect(page.locator('#mindfulness-navigation')).toBeHidden();
       await page.keyboard.press('Escape');
       await expect(button).toBeFocused();
       await expect(page.locator('#training-navigation')).toBeHidden();
       await page.keyboard.press('Enter');
-      if (path === '/trainingen') await page.screenshot({ path: `test-results/header-trainingen-${width}.png` });
+      await expect(page.locator('#training-navigation')).toHaveCSS('background-color', 'rgb(255, 250, 246)');
+      await expect(page.locator('#training-navigation a')).toHaveText(['MBSR-training', 'Voor organisaties']);
+      if (path === '/trainingen/mindfulness-basistraining') await page.screenshot({ path: `test-results/header-trainingen-${width}.png` });
       await page.locator(`#training-navigation a[href="${path}"]`).click();
       await expect(page).toHaveURL(path);
       await expect(page.locator('h1')).toBeVisible();
       await expect(page.locator('#training-navigation')).toBeHidden();
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    }
+  }
+});
+
+test('Main navigation labels are links independent from the submenu buttons', async ({ page }) => {
+  await page.goto('/');
+  for (const width of [1440, 390]) {
+    await page.setViewportSize({ width, height: 900 });
+    for (const [label, path] of [['Mindfulness', '/mindfulness'], ['Trainingen', '/trainingen']]) {
+      if (width <= 1120) await page.getByRole('button', { name: 'Menu openen of sluiten' }).click();
+      const nav = page.getByRole('navigation', { name: 'Hoofdnavigatie' });
+      await nav.getByRole('link', { name: label, exact: true }).click();
+      await expect(page).toHaveURL(path);
+      await expect(page.locator('h1')).toBeVisible();
+      await expect(page.locator('#mindfulness-navigation')).toBeHidden();
+      await expect(page.locator('#training-navigation')).toBeHidden();
     }
   }
 });

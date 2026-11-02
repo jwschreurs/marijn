@@ -19,7 +19,7 @@ export async function Header() {
           />
         </Link>
 
-        <HeaderNavigation copy={copy.header} trainings={trainingen.map(({ slug, title }) => ({ slug, title }))} />
+        <HeaderNavigation copy={copy.header} trainings={trainingen.map(({ slug, title, menuTitle }) => ({ slug, title: menuTitle ?? title }))} />
       </div>
     </header>
   );

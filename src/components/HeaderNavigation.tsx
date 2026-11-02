@@ -59,22 +59,26 @@ export function HeaderNavigation({ copy, trainings }: { copy: typeof pageCopy.he
     <nav id="main-navigation" className={`main-nav${mobileOpen ? ' main-nav--open' : ''}`} aria-label={copy.accessibleLabel3}>
       <Link href="/over-mij" className="nav-link" onClick={close}>{copy.navigation2}</Link>
       <div className="nav-dropdown">
-        <button ref={mindfulnessButton} className="nav-link nav-disclosure" type="button" aria-expanded={openDropdown === 'mindfulness'}
+        <div className="nav-split" data-open={openDropdown === 'mindfulness'}>
+        <Link href="/mindfulness" className="nav-link" onClick={close}>{copy.navigation3}</Link>
+        <button ref={mindfulnessButton} className="nav-disclosure" type="button" aria-label={copy.accessibleLabel4} aria-expanded={openDropdown === 'mindfulness'}
           aria-controls="mindfulness-navigation" onClick={() => setOpenDropdown(openDropdown === 'mindfulness' ? null : 'mindfulness')}>
-          {copy.navigation3}<span aria-hidden="true" className="nav-chevron">⌄</span>
+          <span aria-hidden="true" className="nav-chevron" />
         </button>
+        </div>
         <div id="mindfulness-navigation" className="nav-submenu" hidden={openDropdown !== 'mindfulness'}>
-          <Link href="/mindfulness" onClick={close}>{copy.navigation9}</Link>
           <Link href="/faq" onClick={close}>{copy.navigation7}</Link>
         </div>
       </div>
       <div className="nav-dropdown">
-        <button ref={trainingsButton} className="nav-link nav-disclosure" type="button" aria-expanded={openDropdown === 'trainingen'}
+        <div className="nav-split" data-open={openDropdown === 'trainingen'}>
+        <Link href="/trainingen" className="nav-link" onClick={close}>{copy.navigation4}</Link>
+        <button ref={trainingsButton} className="nav-disclosure" type="button" aria-label={copy.accessibleLabel5} aria-expanded={openDropdown === 'trainingen'}
           aria-controls="training-navigation" onClick={() => setOpenDropdown(openDropdown === 'trainingen' ? null : 'trainingen')}>
-          {copy.navigation4}<span aria-hidden="true" className="nav-chevron">⌄</span>
+          <span aria-hidden="true" className="nav-chevron" />
         </button>
+        </div>
         <div id="training-navigation" className="nav-submenu nav-submenu--trainings" hidden={openDropdown !== 'trainingen'}>
-          <Link href="/trainingen" onClick={close}>{copy.navigation10}</Link>
           {trainings.map(training => <Link key={training.slug} href={`/trainingen/${training.slug}`} onClick={close}>{training.title}</Link>)}
         </div>
       </div>
