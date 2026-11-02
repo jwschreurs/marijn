@@ -10,6 +10,7 @@ export const faqItems: FaqItem[] = [
 export const blogPosts: BlogPost[] = [];
 
 export type Training = {
+  menuTitle?: string;
   slug: string;
   title: string;
   duration: string;
@@ -80,6 +81,7 @@ export const siteConfig = {
 export const trainingen: Training[] = [
   {
     slug: 'mindfulness-basistraining',
+    menuTitle: 'MBSR-training',
     title: 'Mindfulness Based Stress Reduction (MBSR)',
     duration: '8 weken en een stiltedag',
     audience: 'Een vaste groep van gemiddeld 8 tot 10 deelnemers',
@@ -141,6 +143,7 @@ export const trainingen: Training[] = [
   },
   {
     slug: 'mindfulness-op-het-werk',
+    menuTitle: 'Voor organisaties',
     title: 'Mindfulness voor organisaties',
     duration: '8 weken en een stiltedag',
     audience: 'Voor organisaties en teams',
@@ -406,6 +409,8 @@ export const pageCopy = {
     "alt1": "Logo van Marijn met aandacht",
     "accessibleLabel2": "Menu openen of sluiten",
     "accessibleLabel3": "Hoofdnavigatie",
+    "accessibleLabel4": "Submenu Mindfulness openen of sluiten",
+    "accessibleLabel5": "Submenu Trainingen openen of sluiten",
     "navigation1": "Home",
     "navigation2": "Over mij",
     "navigation3": "Mindfulness",
