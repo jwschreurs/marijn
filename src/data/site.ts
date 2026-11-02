@@ -295,6 +295,7 @@ export const pageCopy = {
     "paragraph3": "“I never said it would be easy, I only said it would be worth it.” – Mae West"
   },
   "about": {
+    "alt1": "Portret van Marijn van der Lende",
     "eyebrow1": "Over mij",
     "title1": "Welkom! Mijn naam is Marijn van der Lende",
     "text1": "Ik ben mindfulnesstrainer en GGZ-agoog.",
