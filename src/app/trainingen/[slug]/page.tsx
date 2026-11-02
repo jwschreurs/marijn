@@ -93,6 +93,34 @@ export default async function TrainingDetailPage({
         </div>
       </section>
 
+      {training.investment ? (
+        <section className="section">
+          <div className="container two-column form-layout">
+            <article className="content-card content-card--large">
+              <SectionTitle
+                eyebrow={copy.trainingDetail.eyebrow1}
+                title={training.investment.price}
+                text={training.investment.introduction}
+                headingLevel="h2"
+              />
+              <p className="muted">{training.investment.taxNote}</p>
+              <p>{training.investment.employerNote}</p>
+              <p>{training.investment.reimbursementNote}</p>
+              <Link href="/mindfulness#vergoeding" className="text-link">{copy.trainingDetail.link3}</Link>
+            </article>
+            <article className="content-card content-card--large">
+              <h3>{copy.trainingDetail.heading2}</h3>
+              <ul className="feature-list">
+                {training.investment.includes.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <Link href="/contact" className="button primary inline-button">{copy.trainingDetail.link4}</Link>
+            </article>
+          </div>
+        </section>
+      ) : null}
+
       {training.schedule ? (
         <section className="section soft-section">
           <div className="container detail-stack">
@@ -139,33 +167,6 @@ export default async function TrainingDetailPage({
         </section>
       ) : null}
 
-      {training.investment ? (
-        <section className="section">
-          <div className="container two-column form-layout">
-            <div>
-              <SectionTitle
-                eyebrow={copy.trainingDetail.eyebrow1}
-                title={training.investment.price}
-                text={training.investment.introduction}
-                headingLevel="h2"
-              />
-              <p className="muted">{training.investment.taxNote}</p>
-              <p>{training.investment.employerNote}</p>
-              <p>{training.investment.reimbursementNote}</p>
-              <Link href="/mindfulness#vergoeding" className="text-link">{copy.trainingDetail.link3}</Link>
-            </div>
-            <article className="content-card content-card--large">
-              <h3>{copy.trainingDetail.heading2}</h3>
-              <ul className="feature-list">
-                {training.investment.includes.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-              <Link href="/contact" className="button primary inline-button">{copy.trainingDetail.link4}</Link>
-            </article>
-          </div>
-        </section>
-      ) : null}
       <section className="section soft-section training-inquiry" id="contactformulier" aria-labelledby="contactformulier-title">
         <div className="container narrow">
           <h2 id="contactformulier-title">Neem contact op</h2>
