@@ -1,5 +1,6 @@
 import { getSiteContent } from '@/lib/content';
 import { SectionTitle } from '@/components/SectionTitle';
+import Image from 'next/image';
 
 export default async function OverMijPage() {
   const { copy } = await getSiteContent();
@@ -7,6 +8,16 @@ export default async function OverMijPage() {
     <main>
       <section className="section page-hero">
         <div className="container narrow">
+          <div className="about-portrait">
+            <Image
+              src="/marijn-portret.png"
+              alt={copy.about.alt1}
+              fill
+              sizes="(max-width: 640px) 220px, 280px"
+              className="about-portrait-image"
+              preload
+            />
+          </div>
           <SectionTitle
             eyebrow={copy.about.eyebrow1}
             title={copy.about.title1}
