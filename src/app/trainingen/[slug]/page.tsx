@@ -46,11 +46,14 @@ export default async function TrainingDetailPage({
             text={training.summary}
             align="center"
           />
+          <div className="training-hero-actions">
+            <Link href="#contactformulier" className="button primary">Interesse? Neem contact op</Link>
+          </div>
         </div>
       </section>
 
       <section className="section">
-        <div className="container two-column form-layout">
+        <div className="container narrow">
           <article className="content-card content-card--large">
             <p className="card-target">{training.audience}</p>
             <p>{training.description}</p>
@@ -87,9 +90,6 @@ export default async function TrainingDetailPage({
               <Link href="/contact" className="button secondary">{copy.trainingDetail.link2}</Link>
             </div>
           </article>
-          <div>
-            <TrainingInquiryForm defaultInterest={training.title} />
-          </div>
         </div>
       </section>
 
@@ -166,6 +166,12 @@ export default async function TrainingDetailPage({
           </div>
         </section>
       ) : null}
+      <section className="section soft-section training-inquiry" id="contactformulier" aria-labelledby="contactformulier-title">
+        <div className="container narrow">
+          <h2 id="contactformulier-title">Neem contact op</h2>
+          <TrainingInquiryForm defaultInterest={training.title} />
+        </div>
+      </section>
     </main>
   );
 }
