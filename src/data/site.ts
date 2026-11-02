@@ -1,3 +1,14 @@
+import type { BlogPost, FaqItem } from '@/lib/articles';
+
+export const faqItems: FaqItem[] = [
+  { id: 'wat-is-mindfulness', question: 'Wat is mindfulness?', answer: 'Mindfulness is bewust aandacht geven aan wat je op dit moment ervaart, met een open en milde houding. Je oefent om gedachten, gevoelens en lichamelijke sensaties op te merken, zonder er meteen iets aan te hoeven veranderen.' },
+  { id: 'hoe-oefen-je', question: 'Hoe oefen je mindfulness?', answer: 'Je kunt oefenen door aandacht te geven aan je ademhaling, je lichaam of een dagelijkse activiteit zoals lopen. Wanneer je merkt dat je aandacht afdwaalt, breng je die rustig terug. Dat terugkeren hoort bij de oefening.' },
+  { id: 'hoofd-leeg', question: 'Moet ik mijn hoofd leegmaken?', answer: 'Nee. Gedachten horen erbij. Je oefent om ze op te merken en je aandacht opnieuw te richten op wat je nu ervaart. Je hoeft gedachten niet tegen te houden.' },
+  { id: 'ervaring', question: 'Heb ik ervaring met meditatie nodig?', answer: 'Je hoeft geen ervaring te hebben. In de basistraining worden de oefeningen stap voor stap uitgelegd. Tijdens het intakegesprek bespreken we samen of de training aansluit bij jouw situatie.' },
+  { id: 'training', question: 'Wat doe je tijdens een mindfulnesstraining?', answer: 'Tijdens de training wisselen uitleg, meditatieoefeningen, beweging en reflectie elkaar af. Je oefent ook thuis, zodat je kunt ontdekken hoe je aandacht een plek geeft in je dagelijks leven.' },
+];
+export const blogPosts: BlogPost[] = [];
+
 export type Training = {
   slug: string;
   title: string;
@@ -250,6 +261,19 @@ export const agendaItems: AgendaItem[] = [
 
 // Editable page copy. Keys stay stable so published text survives deployments.
 export const pageCopy = {
+  faq: {
+    title1: 'Veelgestelde vragen over mindfulness',
+    text1: 'Wat houdt mindfulness in en hoe begin je ermee? Hier vind je antwoorden op veelgestelde vragen.',
+    paragraph1: 'Staat jouw vraag er niet bij? Neem gerust contact op.',
+    link1: 'Stel je vraag',
+  },
+  blog: {
+    title1: 'Blog',
+    text1: 'Gedachten en verhalen over aandacht in het dagelijks leven.',
+    paragraph1: 'Binnenkort lees je hier de eerste artikelen.',
+    link1: 'Lees verder',
+    link2: 'Terug naar het blog',
+  },
   "home": {
     "alt1": "Rustige mindfulness achtergrond met uitzicht over een tempelcomplex",
     "heading1": "Meer rust, aandacht en balans in leven en werk.",
@@ -387,7 +411,9 @@ export const pageCopy = {
     "navigation3": "Mindfulness",
     "navigation4": "Trainingen",
     "navigation5": "Agenda",
-    "navigation6": "Contact"
+    "navigation6": "Contact",
+    "navigation7": "Veelgestelde vragen",
+    "navigation8": "Blog"
   },
   "footer": {
     "paragraph1": "Pagina's",

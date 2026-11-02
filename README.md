@@ -50,6 +50,18 @@ Via /beheer kun je na eenmalige inrichting inloggen en websiteteksten publiceren
 
 Extra scripts: npm run beheer:wachtwoord voor het instellen van het beheerderswachtwoord en npm run test voor de inhouds-, wachtwoord- en database-integratietests.
 
+### Veelgestelde vragen en blog
+
+De pagina's `/faq` en `/blog` staan in het hoofdmenu. Kies in `/beheer` bij **Pagina of onderdeel** voor **Veelgestelde vragen** of **Blog**. Hier kun je ook de inleiding en vaste teksten aanpassen.
+
+- Gebruik **Vraag toevoegen** om een vraag en antwoord toe te voegen. Met **Omhoog** wijzig je de volgorde.
+- Gebruik **Blogbericht toevoegen** voor een artikel. Vul een titel, een uniek webadres, datum, samenvatting en artikeltekst in. Een lege regel begint een nieuwe alinea; HTML en Markdown worden als gewone tekst weergegeven.
+- Een blogbericht begint als **Concept**. Klik op **Wijzigingen publiceren** om het concept op te slaan; het blijft verborgen op de website. Kies **Gepubliceerd** en klik opnieuw op die knop om het zichtbaar te maken op `/blog` en `/blog/het-gekozen-webadres`.
+- De datum bepaalt de volgorde (nieuwste eerst). Dit is geen geplande publicatie. Verander een gedeeld webadres niet: er wordt geen doorverwijzing aangemaakt.
+- Verwijderen wordt pas definitief na **Wijzigingen publiceren**. Een verwijderd of teruggezet conceptartikel is niet meer publiek bereikbaar.
+
+De inhoud gebruikt de bestaande database, login en versiecontrole; er is geen aanvullende database-inrichting nodig. Per onderdeel zijn maximaal 100 items mogelijk; de bestaande totale opslaglimiet per publicatie blijft 200 kB. Voor de eerste introductie van deze functionaliteit is wel een nieuwe deployment nodig. Daarna vereisen inhoudswijzigingen geen nieuwe build.
+
 ## Formulieren versturen
 
 Contactaanvragen en MBSR-aanmeldingen worden via Microsoft 365 gemaild. Zie [de installatiehandleiding](docs/formulieren-mail.md) voor de Microsoft-koppeling, database-aanvulling, Vercel-instellingen en oplevercontrole.
