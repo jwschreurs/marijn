@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState, useTransition } from 'react';
 import { publishContent } from '@/app/beheer/actions';
 import type { ContentField, ContentOverrides } from '@/lib/content-schema';
+import { CollectionEditor, CollectionPreview } from './CollectionEditor';
 
 type Props = { fields: ContentField[]; revision: number; updatedAt: string | null };
 export function ContentEditor({ fields, revision: initialRevision, updatedAt: initialUpdatedAt }: Props) {
@@ -58,7 +59,7 @@ export function ContentEditor({ fields, revision: initialRevision, updatedAt: in
         setSaved(submitted);
         setRevision(result.revision);
         setUpdatedAt(result.updatedAt);
-        setMessage('Je wijzigingen zijn gepubliceerd. Ze zijn zichtbaar wanneer je de website opnieuw opent of ververst.');
+        setMessage('Je wijzigingen zijn gepubliceerd. Blogconcepten zijn opgeslagen en blijven alleen zichtbaar in beheer. Ververs de website om de gepubliceerde wijzigingen te zien.');
       } catch {
         setError('De verbinding is verbroken. Je wijzigingen staan nog in dit venster. Probeer opnieuw te publiceren.');
       }
@@ -94,15 +95,21 @@ export function ContentEditor({ fields, revision: initialRevision, updatedAt: in
       {dirty && <details className="admin-review"><summary>Bekijk je wijzigingen ({changed.length})</summary>
         {changed.map(field => <div key={field.id} className="admin-change">
           <h3>{field.group} — {field.label}</h3>
-          <p><strong>Nu online:</strong> {saved[field.id]}</p>
-          <p><strong>Na publiceren:</strong> {values[field.id]}</p>
+          {field.id.startsWith('collections.') ? <>
+            <strong>Opgeslagen versie:</strong><CollectionPreview value={saved[field.id]} />
+            <strong>Na opslaan:</strong><CollectionPreview value={values[field.id]} />
+          </> : <><p><strong>Nu online:</strong> {saved[field.id]}</p>
+            <p><strong>Na publiceren:</strong> {values[field.id]}</p></>}
           <button className="text-link" type="button" onClick={() => setValues(current => ({ ...current, [field.id]: saved[field.id] }))}>Wijziging terugnemen</button>
         </div>)}
       </details>}
       <h2>{query ? 'Zoekresultaten' : group}</h2>
       {!visible.length && <p>Geen teksten gevonden.</p>}
       <div className="admin-field-list">
-        {visible.map(field => <label key={field.id} className="admin-field" htmlFor={field.id}>
+        {visible.map(field => field.id.startsWith('collections.') ? <CollectionEditor
+          key={field.id} kind={field.id === 'collections.faq' ? 'faq' : 'blog'} value={values[field.id]}
+          onChange={value => setValues(current => ({ ...current, [field.id]: value }))}
+        /> : <label key={field.id} className="admin-field" htmlFor={field.id}>
           <span>{query ? field.group + ' — ' : ''}{field.label}{values[field.id] !== saved[field.id] ? ' · gewijzigd' : ''}</span>
           {field.multiline
             ? <textarea id={field.id} rows={5} value={values[field.id]} maxLength={5000} onChange={event => setValues(current => ({ ...current, [field.id]: event.target.value }))} />

@@ -12,6 +12,8 @@ export async function Header() {
     { href: '/mindfulness', label: copy.header.navigation3 },
     { href: '/trainingen', label: copy.header.navigation4 },
     { href: '/agenda', label: copy.header.navigation5 },
+    { href: '/faq', label: copy.header.navigation7 },
+    { href: '/blog', label: copy.header.navigation8 },
     { href: '/contact', label: copy.header.navigation6 },
   ];
   return (

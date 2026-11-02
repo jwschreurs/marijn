@@ -1123,6 +1123,11 @@ code {
     }
 }
 
+.article-copy { overflow-wrap: anywhere; }
+.article-copy p { white-space: pre-wrap; }
+.collection-item { margin-bottom: 1.5rem; min-width: 0; }
+.collection-item label { display: grid; gap: .6rem; }
+
 /* Websitebeheer */
 .admin-heading, .admin-toolbar, .admin-actions { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 .admin-heading { margin-bottom: 2rem; }

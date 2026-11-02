@@ -1,4 +1,5 @@
-import { agendaItems, pageCopy, siteConfig, trainingen } from '@/data/site';
+import { agendaItems, pageCopy, siteConfig, trainingen, faqItems, blogPosts } from '@/data/site';
+import { parseCollection } from './articles';
 
 export type ContentOverrides = Record<string, string>;
 export type ContentField = {
@@ -11,6 +12,7 @@ export const MAX_CONTENT_BYTES = 200_000;
 export const MAX_TEXT_LENGTH = 5_000;
 const defaults = { siteConfig, trainingen, agendaItems, copy: pageCopy };
 const groups: Record<string, string> = {
+  faq: 'Veelgestelde vragen', blog: 'Blog',
   home: 'Homepage', about: 'Over mij', legacyAbout: 'Over Marijn (oude pagina)',
   mindfulness: 'Mindfulness', contact: 'Contact', agenda: 'Agenda — inleiding',
   trainingOverview: 'Trainingen — overzicht', trainingDetail: 'Trainingen — vaste teksten',
@@ -58,6 +60,10 @@ function collect(value: unknown, path: string[] = []) {
   }
 }
 collect(defaults);
+fields.push(
+  { id: 'collections.faq', group: 'Veelgestelde vragen', label: 'Vragen en antwoorden', value: JSON.stringify(faqItems), multiline: true },
+  { id: 'collections.blog', group: 'Blog', label: 'Blogberichten', value: JSON.stringify(blogPosts), multiline: true },
+);
 const fieldById = new Map(fields.map(field => [field.id, field]));
 export function getContentFields(overrides: ContentOverrides = {}): ContentField[] {
   return fields.map(field => ({ ...field, value: overrides[field.id] ?? field.value }));
@@ -67,6 +73,11 @@ export function parseOverrides(value: unknown, strict = true): ContentOverrides 
   if (new TextEncoder().encode(JSON.stringify(value)).length > MAX_CONTENT_BYTES) throw new Error('De teksten zijn samen te groot.');
   const result: ContentOverrides = {};
   for (const [id, text] of Object.entries(value)) {
+    if (id === 'collections.faq' || id === 'collections.blog') {
+      if (typeof text !== 'string') throw new Error('Ongeldig formaat voor de inhoud.');
+      result[id] = JSON.stringify(parseCollection(id === 'collections.faq' ? 'faq' : 'blog', text));
+      continue;
+    }
     const field = fieldById.get(id);
     if (!field) {
       if (strict) throw new Error('Er is een onbekend tekstveld. Herlaad het beheer.');
@@ -88,5 +99,9 @@ function applyText<T>(value: T, overrides: ContentOverrides, path: string[] = []
   return value;
 }
 export function resolveContent(overrides: ContentOverrides) {
-  return applyText(defaults, overrides);
+  return {
+    ...applyText(defaults, overrides),
+    faqItems: parseCollection('faq', overrides['collections.faq'] ?? JSON.stringify(faqItems)),
+    blogPosts: parseCollection('blog', overrides['collections.blog'] ?? JSON.stringify(blogPosts)),
+  };
 }
