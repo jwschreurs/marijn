@@ -1,21 +1,10 @@
 import { getSiteContent } from '@/lib/content';
 import Image from 'next/image';
 import Link from 'next/link';
-
-
+import { HeaderNavigation } from './HeaderNavigation';
 
 export async function Header() {
-  const { copy } = await getSiteContent();
-  const navigation = [
-    { href: '/', label: copy.header.navigation1 },
-    { href: '/over-mij', label: copy.header.navigation2 },
-    { href: '/mindfulness', label: copy.header.navigation3 },
-    { href: '/trainingen', label: copy.header.navigation4 },
-    { href: '/agenda', label: copy.header.navigation5 },
-    { href: '/faq', label: copy.header.navigation7 },
-    { href: '/blog', label: copy.header.navigation8 },
-    { href: '/contact', label: copy.header.navigation6 },
-  ];
+  const { copy, trainingen } = await getSiteContent();
   return (
     <header className="site-header">
       <div className="container header-inner">
@@ -30,20 +19,7 @@ export async function Header() {
           />
         </Link>
 
-        <input className="menu-toggle" type="checkbox" id="menu-toggle" aria-hidden="true" />
-        <label className="hamburger-button" htmlFor="menu-toggle" aria-label={copy.header.accessibleLabel2}>
-          <span />
-          <span />
-          <span />
-        </label>
-
-        <nav className="main-nav" aria-label={copy.header.accessibleLabel3}>
-          {navigation.map((item) => (
-            <Link key={item.href} href={item.href} className="nav-link">
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <HeaderNavigation copy={copy.header} trainings={trainingen.map(({ slug, title }) => ({ slug, title }))} />
       </div>
     </header>
   );

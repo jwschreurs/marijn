@@ -3,20 +3,30 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export async function Footer() {
-  const { copy, siteConfig } = await getSiteContent();
+  const { copy, siteConfig, trainingen } = await getSiteContent();
   return (
     <footer className="site-footer">
       <div className="container footer-grid">
         <div>
           <p className="footer-title">{siteConfig.name}</p>
           <p>{siteConfig.tagline}</p>
+          <nav className="footer-training-links" aria-label={copy.footer.link3}>
+            <p className="footer-title">{copy.footer.link3}</p>
+            <div className="footer-links">
+              <Link href="/trainingen">{copy.header.navigation10}</Link>
+              {trainingen.map(training => (
+                <Link key={training.slug} href={`/trainingen/${training.slug}`}>{training.title}</Link>
+              ))}
+            </div>
+          </nav>
         </div>
         <div>
           <p className="footer-title">{copy.footer.paragraph1}</p>
           <div className="footer-links">
             <Link href="/over-mij">{copy.footer.link1}</Link>
             <Link href="/mindfulness">{copy.footer.link2}</Link>
-            <Link href="/trainingen">{copy.footer.link3}</Link>
+            <Link href="/faq">{copy.footer.link8}</Link>
+            <Link href="/blog">{copy.footer.link9}</Link>
             <Link href="/agenda">{copy.footer.link4}</Link>
             <Link href="/contact">{copy.footer.link5}</Link>
             <a
