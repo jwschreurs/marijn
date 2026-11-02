@@ -421,7 +421,8 @@ export const pageCopy = {
     "navigation7": "Veelgestelde vragen",
     "navigation8": "Blog",
     "navigation9": "Wat is mindfulness?",
-    "navigation10": "Alle trainingen"
+    "navigation10": "Alle trainingen",
+    "navigation11": "FAQ"
   },
   "footer": {
     "paragraph1": "Pagina's",
