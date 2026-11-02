@@ -413,7 +413,9 @@ export const pageCopy = {
     "navigation5": "Agenda",
     "navigation6": "Contact",
     "navigation7": "Veelgestelde vragen",
-    "navigation8": "Blog"
+    "navigation8": "Blog",
+    "navigation9": "Wat is mindfulness?",
+    "navigation10": "Alle trainingen"
   },
   "footer": {
     "paragraph1": "Pagina's",
@@ -424,6 +426,8 @@ export const pageCopy = {
     "link5": "Contact",
     "link6": "Ethische gedragscode VMBN",
     "link7": "Algemene voorwaarden",
+    "link8": "Veelgestelde vragen",
+    "link9": "Blog",
     "paragraph2": "Contact",
     "label1": "E-mail:",
     "label2": "Telefoon:",
