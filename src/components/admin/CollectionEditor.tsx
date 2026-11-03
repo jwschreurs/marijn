@@ -20,7 +20,7 @@ export function CollectionEditor({ kind, value, disabled = false, onChange }: Pr
   }
   return <section className="collection-editor">
     <h3>{kind === 'faq' ? 'Vragen en antwoorden' : 'Blogberichten'}</h3>
-    <p>{kind === 'faq' ? 'Voeg vragen toe en pas de antwoorden aan.' : 'Sla berichten op als concept of maak ze zichtbaar op de website. Een lege regel begint een nieuwe alinea. De datum bepaalt de volgorde, niet het moment van publiceren.'} Wijzigingen worden opgeslagen met de knop bovenaan.</p>
+    <p>{kind === 'faq' ? 'Voeg vragen toe en pas de antwoorden aan.' : 'Sla berichten op als concept of maak ze zichtbaar op de website. Gebruik de opmaakknoppen boven het artikel voor vet, cursief, tussenkoppen, lijsten en links. De datum bepaalt de volgorde, niet het moment van publiceren.'} Wijzigingen worden opgeslagen met de knop bovenaan.</p>
     {items.map((item, index) => <fieldset className="admin-field collection-item" key={item.id}>
       <legend>{kind === 'faq' ? `Vraag ${index + 1}` : `Bericht ${index + 1}`}</legend>
       {'question' in item ? <>

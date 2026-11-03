@@ -1,0 +1,105 @@
+import { expect, test } from '@playwright/test';
+
+test('Blog formatting survives editing, pasting, draft storage and publication', async ({ page }) => {
+  await page.goto('/beheer/inloggen');
+  await page.getByLabel('Wachtwoord', { exact: true }).fill('uitsluitend-lokaal-testwachtwoord');
+  await page.getByRole('button', { name: 'Inloggen', exact: true }).click();
+  await page.getByLabel('Pagina of onderdeel').selectOption('Blog');
+  await page.getByRole('button', { name: 'Blogbericht toevoegen' }).click();
+  await page.getByLabel('Titel', { exact: true }).fill('Een artikel met opmaak');
+  await page.getByLabel('Webadres: /blog/').fill('artikel-met-opmaak');
+  await page.getByLabel('Samenvatting', { exact: true }).fill('Opmaak die bewaard blijft.');
+  const editor = page.getByRole('textbox', { name: 'Artikel', exact: true });
+  const button = (name: string) => page.getByRole('button', { name, exact: true });
+  await editor.fill('Vet en cursief');
+  await editor.press('Control+a');
+  await button('Vet').click();
+  await expect(editor.locator('strong')).toHaveText('Vet en cursief');
+  await button('Ongedaan maken').click();
+  await expect(editor.locator('strong')).toHaveCount(0);
+  await button('Opnieuw').click();
+  await expect(editor.locator('strong')).toHaveText('Vet en cursief');
+  await button('Cursief').click();
+  await expect(editor.locator('em')).toHaveText('Vet en cursief');
+  await button('Link').click();
+  await page.getByLabel('Linkadres', { exact: true }).fill('javascript:alert(1)');
+  await button('Link toepassen').click();
+  await expect(page.getByRole('group', { name: 'Link instellen', exact: true }).getByRole('alert')).toContainText('volledig webadres');
+  await page.getByLabel('Linkadres', { exact: true }).fill('https://example.com');
+  await button('Link toepassen').click();
+  await expect(editor.locator('a')).toHaveAttribute('href', 'https://example.com');
+  let unexpectedDialog = false;
+  page.once('dialog', async dialog => { unexpectedDialog = true; await dialog.dismiss(); });
+  await editor.locator('a').click();
+  expect(unexpectedDialog).toBe(false);
+  page.removeAllListeners('dialog');
+  await expect(page).toHaveURL(/\/beheer$/);
+  await editor.press('Control+End');
+  await editor.press('Enter');
+  await button('Opmaak wissen').click();
+  await page.keyboard.type('Een tussenkop');
+  await button('Tussenkop').click();
+  await expect(editor.locator('h2')).toHaveText('Een tussenkop');
+  await editor.press('Enter');
+  await page.keyboard.type('Eerste punt');
+  await button('Opsomming').click();
+  await editor.press('Enter');
+  await page.keyboard.type('Tweede punt');
+  await editor.press('Enter');
+  await editor.press('Enter');
+  await page.keyboard.type('Genummerd punt');
+  await button('Genummerde lijst').click();
+  await editor.press('Enter');
+  await editor.press('Enter');
+  await editor.evaluate(element => {
+    const data = new DataTransfer();
+    data.setData('text/html', '<p><strong>Geplakt vet</strong> en <em>geplakt cursief</em></p>');
+    data.setData('text/plain', 'Geplakt vet en geplakt cursief');
+    element.dispatchEvent(new ClipboardEvent('paste', { bubbles: true, cancelable: true, clipboardData: data }));
+  });
+  await expect(editor.locator('strong').last()).toHaveText('Geplakt vet');
+  await button('Wijzigingen publiceren').click();
+  await expect(page.getByRole('status')).toContainText('Je wijzigingen zijn gepubliceerd');
+  await page.reload();
+  await page.getByLabel('Pagina of onderdeel').selectOption('Blog');
+  await expect(editor.locator('h2')).toHaveText('Een tussenkop');
+  await expect(editor.locator('strong').first()).toHaveText('Vet en cursief');
+  await expect(editor.locator('ul li')).toHaveCount(2);
+  await expect(editor.locator('ol li')).toHaveCount(1);
+  await expect(button('Wijzigingen publiceren')).toBeDisabled();
+
+  // Discarding an edit must reset the editor as well as its stored value.
+  await editor.press('Control+End');
+  await page.keyboard.type(' Tijdelijke wijziging');
+  await page.getByText('Bekijk je wijzigingen', { exact: false }).click();
+  await button('Wijziging terugnemen').click();
+  await expect(editor).not.toContainText('Tijdelijke wijziging');
+  await page.getByRole('combobox', { name: 'Status', exact: true }).selectOption('published');
+  await button('Wijzigingen publiceren').click();
+  await expect(page.getByRole('status')).toContainText('Je wijzigingen zijn gepubliceerd');
+  for (const width of [390, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await editor.scrollIntoViewIfNeeded();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    await page.screenshot({ path: `test-results/blog-editor-${width}.png` });
+  }
+  const publicPage = await page.context().newPage();
+  for (const width of [390, 1440]) {
+    await publicPage.setViewportSize({ width, height: 900 });
+    await publicPage.goto('/blog/artikel-met-opmaak');
+    await expect(publicPage.locator('article h2')).toHaveText('Een tussenkop');
+    await expect(publicPage.locator('article strong').first()).toHaveText('Vet en cursief');
+    await expect(publicPage.locator('article em').first()).toHaveText('Vet en cursief');
+    await expect(publicPage.locator('article a')).toHaveAttribute('href', 'https://example.com');
+    await expect(publicPage.locator('article ul li')).toHaveCount(2);
+    await expect(publicPage.locator('article ol li')).toHaveCount(1);
+    await expect(publicPage.locator('article strong').last()).toHaveText('Geplakt vet');
+    expect(await publicPage.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    await publicPage.screenshot({ path: `test-results/blog-opmaak-${width}.png`, fullPage: true });
+  }
+  await publicPage.close();
+  page.on('dialog', dialog => dialog.accept());
+  await button('Verwijderen').click();
+  await button('Wijzigingen publiceren').click();
+  await expect(page.getByRole('status')).toContainText('Je wijzigingen zijn gepubliceerd');
+});

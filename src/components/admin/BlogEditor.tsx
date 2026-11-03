@@ -47,7 +47,7 @@ export function BlogEditor({ body, richBody, required, disabled, onChange }: Pro
     }
   }, [editor, body, richBody]);
 
-  useEffect(() => { editor?.setEditable(!disabled); }, [editor, disabled]);
+  useEffect(() => { editor?.setEditable(!disabled, false); }, [editor, disabled]);
   useEffect(() => { if (linkSelection) linkInput.current?.focus(); }, [linkSelection]);
 
   function openLink() {
