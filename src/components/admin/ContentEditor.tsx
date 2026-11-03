@@ -31,7 +31,7 @@ export function ContentEditor({ fields, revision: initialRevision, updatedAt: in
     const leave = (event: Event) => {
       const target = event.target instanceof Element ? event.target : null;
       const anchor = target?.closest('a');
-      const isNavigation = anchor && anchor.target !== '_blank' && !anchor.getAttribute('href')?.startsWith('#');
+      const isNavigation = anchor && !anchor.closest('[contenteditable]') && anchor.target !== '_blank' && !anchor.getAttribute('href')?.startsWith('#');
       const isLogout = event.type === 'submit' && target?.closest('[data-admin-logout]');
       if ((isNavigation || isLogout) && !window.confirm('Je hebt ongepubliceerde wijzigingen. Wil je deze pagina toch verlaten?')) {
         event.preventDefault();
