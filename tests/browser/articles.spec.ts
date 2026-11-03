@@ -18,7 +18,10 @@ test('Manage FAQ and blog through existing publication flow', async ({ page }) =
   await page.getByLabel('Titel', { exact: true }).fill('Aandacht onderweg');
   await page.getByLabel('Webadres: /blog/').fill('aandacht-onderweg');
   await page.getByLabel('Samenvatting', { exact: true }).fill('Een moment van aandacht.');
-  await page.getByLabel('Artikel', { exact: true }).fill('Eerste alinea.\n\nTweede alinea.');
+  await page.getByRole('textbox', { name: 'Artikel', exact: true }).fill('Eerste alinea.');
+  await page.getByRole('textbox', { name: 'Artikel', exact: true }).press('End');
+  await page.keyboard.press('Enter');
+  await page.keyboard.type('Tweede alinea.');
   await page.getByRole('button', { name: 'Wijzigingen publiceren' }).click();
   await expect(page.getByRole('status')).toContainText('Je wijzigingen zijn gepubliceerd');
   await publicPage.goto('/blog');

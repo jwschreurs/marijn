@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getSiteContent } from '@/lib/content';
+import { ArticleBody } from '@/components/ArticleBody';
 
 type Props = { params: Promise<{ slug: string }> };
 async function findPost(params: Props['params']) {
@@ -22,7 +23,7 @@ export default async function BlogPostPage({ params }: Props) {
       <h1>{post.title}</h1>
       <time dateTime={post.date}>{new Date(`${post.date}T12:00:00Z`).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Amsterdam' })}</time>
       <p className="muted">{post.summary}</p>
-      {post.body.split(/\n\s*\n/).filter(Boolean).map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+      <ArticleBody body={post.body} richBody={post.richBody} />
     </article>
   </div></main>;
 }

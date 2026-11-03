@@ -108,6 +108,7 @@ export function ContentEditor({ fields, revision: initialRevision, updatedAt: in
       <div className="admin-field-list">
         {visible.map(field => field.id.startsWith('collections.') ? <CollectionEditor
           key={field.id} kind={field.id === 'collections.faq' ? 'faq' : 'blog'} value={values[field.id]}
+          disabled={pending}
           onChange={value => setValues(current => ({ ...current, [field.id]: value }))}
         /> : <label key={field.id} className="admin-field" htmlFor={field.id}>
           <span>{query ? field.group + ' — ' : ''}{field.label}{values[field.id] !== saved[field.id] ? ' · gewijzigd' : ''}</span>
