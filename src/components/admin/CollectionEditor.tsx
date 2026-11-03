@@ -1,10 +1,12 @@
 'use client';
 
 import type { BlogPost, CollectionKind, FaqItem } from '@/lib/articles';
+import { BlogEditor } from './BlogEditor';
+import { ArticleBody } from '@/components/ArticleBody';
 
-type Props = { kind: CollectionKind; value: string; onChange: (value: string) => void };
+type Props = { kind: CollectionKind; value: string; disabled?: boolean; onChange: (value: string) => void };
 
-export function CollectionEditor({ kind, value, onChange }: Props) {
+export function CollectionEditor({ kind, value, disabled = false, onChange }: Props) {
   // Values originate in validated server data or in this editor; incomplete edits stay local.
   const items: (FaqItem | BlogPost)[] = JSON.parse(value);
   const update = (id: string, changes: Partial<FaqItem & BlogPost>) => onChange(JSON.stringify(items.map(item => item.id === id ? { ...item, ...changes } : item)));
@@ -30,7 +32,7 @@ export function CollectionEditor({ kind, value, onChange }: Props) {
         <p className="muted">Gebruik kleine letters, cijfers en streepjes, bijvoorbeeld aandacht-in-het-dagelijks-leven. Wijzig dit adres niet nadat je het hebt gedeeld.</p>
         <label>Datum<input type="date" required value={item.date} onChange={e => update(item.id, { date: e.target.value })} /></label>
         <label>Samenvatting<textarea rows={3} value={item.summary} maxLength={1000} required={item.published} onChange={e => update(item.id, { summary: e.target.value })} /></label>
-        <label>Artikel<textarea rows={12} value={item.body} maxLength={30000} required={item.published} onChange={e => update(item.id, { body: e.target.value })} /></label>
+        <BlogEditor body={item.body} richBody={item.richBody} required={item.published} disabled={disabled} onChange={changes => update(item.id, changes)} />
         <label>Status<select value={item.published ? 'published' : 'draft'} onChange={e => update(item.id, { published: e.target.value === 'published' })}>
           <option value="draft">Concept — alleen zichtbaar in beheer</option>
           <option value="published">Gepubliceerd — zichtbaar na opslaan</option>
@@ -57,7 +59,7 @@ export function CollectionPreview({ value }: { value: string }) {
     <h4>{'question' in item ? item.question : item.title}</h4>
     {'question' in item ? <p>{item.answer}</p> : <>
       <p>{item.published ? 'Gepubliceerd' : 'Concept'} · {item.date} · /blog/{item.slug}</p>
-      <p>{item.summary}</p><p>{item.body}</p>
+      <p>{item.summary}</p><ArticleBody body={item.body} richBody={item.richBody} />
     </>}
   </div>) : <p>Geen items.</p>}</div>;
 }

@@ -1,5 +1,7 @@
+import { parseRichText, richTextToPlain, type RichNode } from './rich-text';
+
 export type FaqItem = { id: string; question: string; answer: string };
-export type BlogPost = { id: string; slug: string; title: string; summary: string; body: string; date: string; published: boolean };
+export type BlogPost = { id: string; slug: string; title: string; summary: string; body: string; richBody?: RichNode; date: string; published: boolean };
 export type CollectionKind = 'faq' | 'blog';
 
 function record(value: unknown): Record<string, unknown> {
@@ -33,7 +35,9 @@ export function parseCollection(kind: CollectionKind, serialized: string): FaqIt
     const date = text(item.date, 'Datum', 10);
     const parsedDate = new Date(`${date}T12:00:00Z`);
     if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || !Number.isFinite(parsedDate.getTime()) || parsedDate.toISOString().slice(0, 10) !== date) throw new Error('Vul een geldige datum in.');
-    return { id, slug, date, published: item.published, title: text(item.title, 'Titel', 200), summary: text(item.summary, 'Samenvatting', 1000, item.published), body: text(item.body, 'Artikel', 30000, item.published) };
+    const richBody = item.richBody === undefined ? undefined : parseRichText(item.richBody);
+    const body = text(richBody ? richTextToPlain(richBody) : item.body, 'Artikel', 30000, item.published);
+    return { id, slug, date, published: item.published, title: text(item.title, 'Titel', 200), summary: text(item.summary, 'Samenvatting', 1000, item.published), body, ...(richBody ? { richBody } : {}) };
   }) as FaqItem[] | BlogPost[];
 }
 
